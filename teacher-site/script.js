@@ -1,4 +1,6 @@
 const form = document.querySelector("#teacherLoginForm");
+const usernameInput = document.querySelector("#teacherUsername");
+const passwordInput = document.querySelector("#teacherPassword");
 const forgotButton = document.querySelector("#forgotPassword");
 const applyButton = document.querySelector("#applyAccess");
 
@@ -21,7 +23,15 @@ function showToast(message) {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  showToast("Teacher workspace demo is ready to connect.");
+
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (username === "teacher" && password === "123") {
+    window.location.href = "my-classes/index.html";
+  } else {
+    showToast("Invalid username or password. Please try again.");
+  }
 });
 
 forgotButton.addEventListener("click", () => {

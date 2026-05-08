@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Management | Teacher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../my-classes/index.html"></div>
+
+        <section class="class-header" aria-labelledby="class-title">
+          <h1 id="class-title">Advanced Mathematics &mdash; Grade 10</h1>
+          <div class="class-meta">
+            <span class="code-pill">MATH-10A</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+              Room 301, Science Wing
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+              Tue &amp; Thu, 4:30 PM - 6:00 PM
+            </span>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="Class sections">
+          <a class="active" href="index.html" aria-current="page">Student</a>
+          <a href="../materials/index.html">Material</a>
+          <a href="../assignments/index.html">Assignment</a>
+          <a href="../schedule/index.html">Schedule</a>
+        </nav>
+        <script>
+          const code = new URLSearchParams(location.search).get("code");
+          if (code) {
+            document.querySelectorAll(".tabs a:not(.active)").forEach((a) => {
+              const href = a.getAttribute("href");
+              if (href && href !== "#") {
+                a.href = href + "?code=" + encodeURIComponent(code);
+              }
+            });
+          }
+        </script>
+
+        <section class="stats-panel" aria-label="Class summary">
+          <div>
+            <p>TOTAL ENROLLED</p>
+            <strong id="totalStudents">24 Students</strong>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <p>AVG. PROGRESS</p>
+            <strong class="accent" id="averageProgress">82%</strong>
+          </div>
+        </section>
+
+        <section class="student-panel" aria-label="Students">
+          <div class="student-table" role="table" aria-label="Student roster">
+            <div class="table-head" role="row">
+              <span role="columnheader">STUDENT NAME</span>
+              <span role="columnheader">ATTENDANCE</span>
+              <span role="columnheader">LEARNING PROGRESS</span>
+              <span role="columnheader">STATUS</span>
+              <span role="columnheader">FEEDBACK</span>
+            </div>
+            <div id="studentList"></div>
+          </div>
+
+          <footer class="table-footer">
+            <p id="studentCountLabel">Showing 4 of 24 students</p>
+            <div class="pagination" aria-label="Pagination">
+              <button type="button" aria-label="Previous page">
+                <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+              </button>
+              <button class="active" type="button">1</button>
+              <button type="button">2</button>
+              <button type="button" aria-label="Next page">
+                <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+              </button>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

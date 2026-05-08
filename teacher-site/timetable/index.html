@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timetable | Teacher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="schedule"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../my-classes/index.html"></div>
+
+        <section class="page-heading" aria-labelledby="timetable-title">
+          <div>
+            <p class="eyebrow">WEEKLY OVERVIEW</p>
+            <h1 id="timetable-title">Teacher Timetable</h1>
+          </div>
+          <div class="view-switch" aria-label="Calendar view">
+            <button class="active" type="button">Week</button>
+            <button type="button">Month</button>
+            <button type="button">Day</button>
+          </div>
+        </section>
+
+        <section class="calendar-shell" aria-label="Weekly timetable">
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <aside class="detail-card" id="detailCard" aria-live="polite" hidden></aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

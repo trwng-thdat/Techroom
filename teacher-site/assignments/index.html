@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Assignments | Teacher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../my-classes/index.html"></div>
+
+        <section class="class-header" aria-labelledby="class-title">
+          <h1 id="class-title">Advanced Mathematics &mdash; Grade 10</h1>
+          <div class="class-meta">
+            <span class="code-pill">MATH-10A</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+              Room 301, Science Wing
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+              Tue &amp; Thu, 4:30 PM - 6:00 PM
+            </span>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="Class sections">
+          <a href="../class-management/index.html">Student</a>
+          <a href="../materials/index.html">Material</a>
+          <a class="active" href="index.html" aria-current="page">Assignment</a>
+          <a href="../schedule/index.html">Schedule</a>
+        </nav>
+
+        <section class="assignment-toolbar" aria-label="Assignments overview">
+          <div>
+            <h2>Class Assignments</h2>
+            <p>Manage and track student progress for current curriculum.</p>
+          </div>
+          <button class="create-button" type="button" id="createAssignment">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14" /><path d="M5 12h14" /></svg>
+            Create Assignment
+          </button>
+        </section>
+
+        <section class="assignment-panel" aria-label="Assignment list">
+          <div class="assignment-table" role="table" aria-label="Assignments">
+            <div class="table-head" role="row">
+              <span role="columnheader">ASSIGNMENT TITLE</span>
+              <span role="columnheader">POSTED</span>
+              <span role="columnheader">DEADLINE</span>
+              <span role="columnheader">PROGRESS</span>
+              <span role="columnheader">ACTIONS</span>
+            </div>
+            <div id="assignmentList"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

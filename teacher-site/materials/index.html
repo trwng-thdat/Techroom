@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Materials | Teacher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../my-classes/index.html"></div>
+
+        <section class="class-header" aria-labelledby="class-title">
+          <h1 id="class-title">Advanced Mathematics &mdash; Grade 10</h1>
+          <div class="class-meta">
+            <span class="code-pill">MATH-10A</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+              Room 301, Science Wing
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+              Tue &amp; Thu, 4:30 PM - 6:00 PM
+            </span>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="Class sections">
+          <a href="../class-management/index.html">Student</a>
+          <a class="active" href="index.html" aria-current="page">Material</a>
+          <a href="../assignments/index.html">Assignment</a>
+          <a href="../schedule/index.html">Schedule</a>
+        </nav>
+        <script>
+          const code = new URLSearchParams(location.search).get("code");
+          if (code) {
+            document.querySelectorAll(".tabs a:not(.active)").forEach((a) => {
+              const href = a.getAttribute("href");
+              if (href && href !== "#") {
+                a.href = href + "?code=" + encodeURIComponent(code);
+              }
+            });
+          }
+        </script>
+
+        <section class="upload-panel" aria-label="Upload learning resources">
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M16 16 12 12 8 16" />
+              <path d="M12 12v9" />
+              <path d="M20.4 17.4A5 5 0 0 0 18 8h-1.3A8 8 0 1 0 3.6 16.3" />
+              <path d="M16 16h2a4 4 0 0 0 0-8" />
+            </svg>
+          </div>
+          <h2>Upload New Resources</h2>
+          <p>Drag and drop files here or use the buttons to curate your atelier.</p>
+          <div class="upload-actions">
+            <button class="primary-action" type="button" id="uploadFile">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12" /><path d="m7 8 5-5 5 5" /><path d="M5 21h14" /></svg>
+              Upload File
+            </button>
+            <button class="secondary-action" type="button" id="addLink">
+              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2" /><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2" /></svg>
+              Add Link
+            </button>
+          </div>
+        </section>
+
+        <section class="materials-grid" id="materialsList" aria-label="Class materials"></section>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

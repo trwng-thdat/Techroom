@@ -2,13 +2,15 @@
 
 ## Project Structure & Module Organization
 
-This repository contains two standalone static login portals:
+This repository contains static HTML, CSS, and JavaScript portals:
 
 - `student-site/`: student-facing HTML, CSS, and JavaScript.
-- `teacher-site/`: teacher-facing HTML, CSS, and JavaScript.
+- `teacher-site/`: teacher-facing HTML, CSS, and JavaScript. Teacher app pages are organized into page folders such as `my-classes/`, `class-management/`, `materials/`, `assignments/`, and `schedule/`.
 - `README.md`: short project identifier.
 
-Each site keeps its files side by side as `index.html`, `styles.css`, and `script.js`. Keep changes scoped to the relevant portal unless a visual or behavior update must stay consistent across both. There is currently no shared asset, build, or test directory.
+Each page folder keeps its files side by side as `index.html`, `styles.css`, and `script.js`. Keep changes scoped to the relevant portal unless a visual or behavior update must stay consistent across multiple pages.
+
+Prefer shared components for repeated teacher app chrome. Reuse `teacher-site/sidebar.js` for the sidebar and `teacher-site/header.js` for the workspace header instead of recreating those elements directly in page HTML. If a shared component needs a different link or active state, pass it through `data-*` attributes on the container rather than duplicating markup.
 
 ## Build, Test, and Development Commands
 
