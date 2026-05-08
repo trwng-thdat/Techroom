@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier Tutoring | Student Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <section class="portal-shell" aria-labelledby="login-title">
+        <a class="brand" href="#" aria-label="Atelier Tutoring home">
+          <span class="brand-mark">A</span>
+          <span>Atelier Tutoring</span>
+        </a>
+
+        <div class="intro">
+          <p class="eyebrow">STUDENT PORTAL</p>
+          <h1 id="login-title">Welcome back to the <span>Atelier.</span></h1>
+          <p>
+            Access your learning workspace, upcoming sessions, and study
+            resources with precision.
+          </p>
+        </div>
+
+        <form class="login-card" id="studentLoginForm" novalidate>
+          <div class="field-group">
+            <label for="studentUsername">Username</label>
+            <input
+              id="studentUsername"
+              name="username"
+              type="text"
+              value=""
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="field-group">
+            <div class="label-row">
+              <label for="studentPassword">Password</label>
+              <button class="link-button" type="button" id="forgotPassword">
+                Forgot?
+              </button>
+            </div>
+            <input
+              id="studentPassword"
+              name="password"
+              type="password"
+               value=""
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button class="primary-button" type="submit">Sign In to Workspace</button>
+
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <p>OR CONTINUE WITH</p>
+            <span></span>
+          </div>
+        </form>
+
+        <p class="signup-note">
+          Don't have an account?
+          <button class="text-action" type="button" id="applyAccess">
+            Apply for an Atelier space.
+          </button>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 DIGITAL ATELIER. ALL RIGHTS RESERVED.</p>
+      <nav aria-label="Footer links">
+        <a href="#">PRIVACY POLICY</a>
+        <a href="#">TERMS OF SERVICE</a>
+        <a href="#">HELP CENTER</a>
+      </nav>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

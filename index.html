@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Techroom — Atelier Tutoring</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f4f5f7; color: #1a1a2e;
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px; width: 100%; text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    h1 span { color: #7c3aed; }
+    .subtitle {
+      font-size: 1.1rem; color: #6b7280; margin-bottom: 3rem;
+    }
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s;
+      text-align: left;
+    }
+    .card:hover {
+      transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem;
+    }
+    .card-icon.student { background: #7c3aed; }
+    .card-icon.teacher { background: #0891b2; }
+    .card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.95rem; color: #6b7280; margin-bottom: 1.5rem; line-height: 1.5; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.6rem; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 0.95rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-student { background: #7c3aed; color: #fff; }
+    .btn-student:hover { background: #6d28d9; }
+    .btn-teacher { background: #0891b2; color: #fff; }
+    .btn-teacher:hover { background: #0e7490; }
+    footer { margin-top: 3rem; font-size: 0.85rem; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tech<span>room</span></h1>
+    <p class="subtitle">Atelier Tutoring — Select your portal</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon student">S</div>
+        <h2>Student Portal</h2>
+        <p>Access your learning workspace, upcoming sessions, and study resources.</p>
+        <a href="student-site/index.html" class="btn btn-student">Open Student Site</a>
+      </div>
+      <div class="card">
+        <div class="card-icon teacher">T</div>
+        <h2>Teacher Portal</h2>
+        <p>Manage your curated workspace and educational journey with precision.</p>
+        <a href="teacher-site/index.html" class="btn btn-teacher">Open Teacher Site</a>
+      </div>
+    </div>
+    <footer>&copy; 2026 Atelier Tutoring</footer>
+  </div>
+</body>
+</html>
