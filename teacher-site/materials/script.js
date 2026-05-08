@@ -1,35 +1,4 @@
-const materials = [
-  {
-    title: "Calculus Foundations: Limits & Continuity",
-    type: "pdf",
-    size: "4.2 MB",
-    added: "OCT 12, 2023",
-  },
-  {
-    title: "Interactive Desmos Graph: Unit Circle",
-    type: "link",
-    size: "",
-    added: "OCT 10, 2023",
-  },
-  {
-    title: "Homework Sheet 04: Trigonometric Identities",
-    type: "doc",
-    size: "850 KB",
-    added: "OCT 08, 2023",
-  },
-  {
-    title: "Midterm Exam Review: Semester A",
-    type: "pdf",
-    size: "12.5 MB",
-    added: "OCT 05, 2023",
-  },
-  {
-    title: "Visualizing Derivatives - 3Blue1Brown",
-    type: "link",
-    size: "",
-    added: "OCT 02, 2023",
-  },
-];
+const materials = window.TeacherData.materials;
 
 const iconPaths = {
   pdf: '<path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" /><path d="M14 3v5h5" /><path d="M8 13h8M8 17h5" />',
@@ -44,7 +13,7 @@ const addLinkButton = document.querySelector("#addLink");
 function renderMaterials() {
   materialsList.innerHTML = materials
     .map((material) => {
-      const sizeText = material.size ? `${material.size}   •   ` : "";
+      const sizeText = material.size ? `${material.size}   -   ` : "";
 
       return `
         <article class="material-card">

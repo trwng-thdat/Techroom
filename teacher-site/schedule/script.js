@@ -1,35 +1,4 @@
-const sessions = [
-  {
-    date: "Oct 24, 2023",
-    day: "Tuesday",
-    time: "4:30 PM",
-    status: "Completed",
-    action: "View Roster",
-  },
-  {
-    date: "Oct 26, 2023",
-    day: "Thursday",
-    time: "4:30 PM",
-    status: "In Progress",
-    action: "Take Attendance",
-    current: true,
-    today: true,
-  },
-  {
-    date: "Oct 31, 2023",
-    day: "Tuesday",
-    time: "4:30 PM",
-    status: "Scheduled",
-    action: null,
-  },
-  {
-    date: "Nov 02, 2023",
-    day: "Thursday",
-    time: "4:30 PM",
-    status: "Scheduled",
-    action: null,
-  },
-];
+const sessions = window.TeacherData.sessions;
 
 const sessionList = document.querySelector("#sessionList");
 const sessionCount = document.querySelector("#sessionCount");
@@ -88,7 +57,7 @@ sessionList.addEventListener("mouseover", (event) => {
   const time = row.querySelector(".time-cell").textContent.trim();
   const status = row.querySelector(".status-pill").textContent.trim();
 
-  tooltip.textContent = `${date} (${day}) · ${time} · ${status}`;
+  tooltip.textContent = `${date} (${day}) - ${time} - ${status}`;
   tooltip.hidden = false;
 
   const rect = row.getBoundingClientRect();

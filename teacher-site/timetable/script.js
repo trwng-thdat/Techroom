@@ -1,59 +1,6 @@
-const weekDays = [
-  { label: "MON", date: 14 },
-  { label: "TUE", date: 15 },
-  { label: "WED", date: 16, today: true },
-  { label: "THU", date: 17 },
-  { label: "FRI", date: 18 },
-];
-
-const timeSlots = [
-  "08:00 AM",
-  "09:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "01:00 PM",
-  "02:00 PM",
-  "03:00 PM",
-  "04:00 PM",
-  "05:00 PM",
-  "06:00 PM",
-  "07:00 PM",
-];
-
-const timetableEvents = [
-  {
-    id: "math-monday",
-    title: "Advanced Mathematics",
-    day: 0,
-    startHour: 9,
-    startMinute: 0,
-    durationMinutes: 90,
-    location: "Room 301",
-    students: "12 Enrolled",
-  },
-  {
-    id: "art-history",
-    title: "Art History",
-    day: 1,
-    startHour: 14,
-    startMinute: 0,
-    durationMinutes: 90,
-    location: "Studio B",
-    students: "18 Enrolled",
-  },
-  {
-    id: "math-thursday",
-    title: "Advanced Mathematics",
-    day: 3,
-    startHour: 16,
-    startMinute: 30,
-    durationMinutes: 90,
-    location: "Room 301",
-    students: "12 Enrolled",
-    active: true,
-  },
-];
+const weekDays = window.TeacherData.weekDays;
+const timeSlots = window.TeacherData.timeSlots;
+const timetableEvents = window.TeacherData.timetableEvents;
 
 const calendarGrid = document.querySelector("#calendarGrid");
 const calendarShell = document.querySelector(".calendar-shell");

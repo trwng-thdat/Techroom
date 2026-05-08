@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback | Teacher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../class-management/index.html"></div>
+
+        <section class="recipient" aria-labelledby="studentName">
+          <div>
+            <p class="eyebrow">FEEDBACK RECIPIENT</p>
+            <h1 id="studentName">Student Name</h1>
+            <p>Advanced Mathematics &mdash; Grade 10</p>
+          </div>
+          <span class="student-photo" id="studentPhoto">S</span>
+        </section>
+
+        <form class="feedback-card" id="feedbackForm">
+          <section class="form-section" aria-labelledby="performanceTitle">
+            <h2 id="performanceTitle">
+              <svg viewBox="0 0 24 24"><path d="M4 19V5" /><path d="M8 17V9" /><path d="M12 17V7" /><path d="M16 17v-5" /><path d="M20 17V4" /></svg>
+              Student Performance
+            </h2>
+
+            <fieldset>
+              <legend>Attitude</legend>
+              <div class="segmented">
+                <label>
+                  <input type="radio" name="attitude" value="Attentive" />
+                  <span>Attentive</span>
+                </label>
+                <label>
+                  <input type="radio" name="attitude" value="Steady" />
+                  <span>Steady</span>
+                </label>
+                <label>
+                  <input type="radio" name="attitude" value="Distracted" />
+                  <span>Distracted</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Progress</legend>
+              <div class="segmented">
+                <label>
+                  <input type="radio" name="progress" value="Excellent" />
+                  <span>Excellent</span>
+                </label>
+                <label>
+                  <input type="radio" name="progress" value="Good" />
+                  <span>Good</span>
+                </label>
+                <label>
+                  <input type="radio" name="progress" value="Needs Improvement" />
+                  <span>Needs Improvement</span>
+                </label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="form-section" aria-labelledby="detailsTitle">
+            <h2 id="detailsTitle">
+              <svg viewBox="0 0 24 24"><path d="M4 6h10" /><path d="M4 12h16" /><path d="M4 18h8" /><path d="m17 15 3 3-3 3" /></svg>
+              Detailed Feedback
+            </h2>
+
+            <label class="comment-label" for="comments">Observations &amp; Comments</label>
+            <textarea id="comments" name="comments" rows="7"></textarea>
+          </section>
+
+          <div class="form-actions">
+            <button class="save-button" type="submit">
+              <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z" /><path d="M17 21v-8H7v8" /><path d="M7 3v5h8" /></svg>
+              Save Feedback
+            </button>
+            <a class="cancel-button" href="../class-management/index.html">Cancel</a>
+          </div>
+        </form>
+
+        <p class="toast" id="toast" hidden>Feedback saved.</p>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,37 +1,4 @@
-const assignments = [
-  {
-    title: "Quadratic Equations Practice",
-    posted: "Oct 12",
-    deadline: "Oct 24, 11:59 PM",
-    submitted: 24,
-    total: 28,
-    urgent: true,
-  },
-  {
-    title: "Trigonometry Basics Quiz",
-    posted: "Oct 05",
-    deadline: "Oct 15, 11:59 PM",
-    submitted: 28,
-    total: 28,
-    urgent: false,
-  },
-  {
-    title: "Logarithmic Functions HW",
-    posted: "Oct 26",
-    deadline: "Oct 28",
-    submitted: 0,
-    total: 28,
-    urgent: false,
-  },
-  {
-    title: "Geometry Final Project Phase 1",
-    posted: "Oct 18",
-    deadline: "Nov 01, 11:59 PM",
-    submitted: 12,
-    total: 28,
-    urgent: true,
-  },
-];
+const assignments = window.TeacherData.assignments;
 
 const assignmentList = document.querySelector("#assignmentList");
 const createAssignmentButton = document.querySelector("#createAssignment");

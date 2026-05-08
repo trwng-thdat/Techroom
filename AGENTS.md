@@ -12,6 +12,10 @@ Each page folder keeps its files side by side as `index.html`, `styles.css`, and
 
 Prefer shared components for repeated teacher app chrome. Reuse `teacher-site/sidebar.js` for the sidebar and `teacher-site/header.js` for the workspace header instead of recreating those elements directly in page HTML. If a shared component needs a different link or active state, pass it through `data-*` attributes on the container rather than duplicating markup.
 
+Centralize teacher app data in `teacher-site/data.js`. Page-specific scripts should read lists such as students, feedback, materials, assignments, scheduled sessions, and timetable events from `window.TeacherData` instead of declaring their own data arrays. Include `../data.js` before the page script.
+
+Use toast-style UI for user notifications. Prefer an in-page toast component or helper for save confirmations, validation notes, and placeholder actions instead of `window.alert()`, so feedback stays consistent and non-blocking across the app.
+
 ## Build, Test, and Development Commands
 
 There is no package manager or build step. Open either HTML file directly in a browser for quick checks:
