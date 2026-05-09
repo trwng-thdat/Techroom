@@ -70,7 +70,7 @@ function renderClassCard(classItem) {
     : `<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>`;
 
   return `
-    <article class="class-card" style="--accent:${classItem.accent}" data-code="${classItem.code}">
+    <article class="class-card" style="--accent:${classItem.accent}" data-code="${classItem.code}" data-status="${classItem.status.toLowerCase()}">
       <div class="card-head">
         <div>
           <h2>${classItem.title}</h2>
@@ -126,10 +126,11 @@ function renderClasses() {
   classGrid.innerHTML = filteredClasses.map(renderClassCard).join("");
   emptyState.hidden = filteredClasses.length !== 0;
 
-  classGrid.querySelectorAll(".card-action").forEach((button) => {
-    button.addEventListener("click", () => {
-      const code = button.dataset.code;
-      window.location.href = `class-detail/index.html?code=${code}`;
+  classGrid.querySelectorAll(".class-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("button, a, input, select, textarea, label")) return;
+      const page = card.dataset.status === "completed" ? "feedback" : "class-detail";
+      window.location.href = `${page}/index.html?code=${card.dataset.code}`;
     });
   });
 }

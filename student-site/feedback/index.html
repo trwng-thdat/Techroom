@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Feedback | Student</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="sidebar-container"
+        data-active="my-classes"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="../absence-requests/index.html"
+        data-schedule-href="../schedule/index.html"
+        data-profile-href="../profile/index.html"
+        data-settings-href="#">
+      </div>
+
+      <main class="content">
+        <div id="header-container"
+          data-back-href="../index.html"
+          data-profile-href="../profile/index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54">
+        </div>
+
+        <section class="class-header" aria-labelledby="feedback-title">
+          <div>
+            <div class="class-header-meta">
+              <span class="class-code" id="classCode">CS-201-D</span>
+              <span class="class-level" id="classLevel">Intermediate</span>
+            </div>
+            <h1 id="feedback-title">Intro to Algorithms</h1>
+            <div class="class-info-row">
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+                <span id="classSchedule">Wed & Fri · 8:30 - 10:00 AM</span>
+              </span>
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+                <span id="classLocation">Lab 110, Computer Science Building</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <div class="feedback-body">
+          <div class="teacher-summary">
+            <span class="teacher-avatar" id="teacherAvatar" style="background:#787f84">LW</span>
+            <div>
+              <strong id="teacherName">Dr. Linda Wu</strong>
+              <small id="teacherRole">Senior Lecturer</small>
+            </div>
+          </div>
+
+          <form class="feedback-form" id="feedbackForm" novalidate>
+            <label for="feedbackText">
+              <span class="feedback-label">Your Feedback</span>
+              <small class="feedback-hint" id="feedbackHint">Share your thoughts about this class</small>
+            </label>
+            <textarea
+              id="feedbackText"
+              rows="6"
+              placeholder="What did you enjoy? What could be improved?"
+              required
+            ></textarea>
+            <span class="field-error" id="feedbackError" hidden>Please enter your feedback before submitting.</span>
+            <button class="btn-submit" type="submit">Submit Feedback</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
