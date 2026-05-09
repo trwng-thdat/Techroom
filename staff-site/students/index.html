@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="students" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search students..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Academic Roster</p>
+            <h1>Students</h1>
+            <p class="page-subtitle">Manage learner profiles, guardians, and initial class placement.</p>
+          </div>
+          <div class="staff-toolbar">
+            <label class="staff-search">
+              <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+              <input id="studentDirectorySearch" type="search" placeholder="Filter by name, ID, grade..." />
+            </label>
+            <button class="primary-button" type="button" id="addStudentButton">+ Add Student</button>
+          </div>
+        </section>
+
+        <section class="class-table-card" aria-label="Student directory">
+          <table class="data-table">
+            <thead>
+              <tr><th>Student</th><th>Grade</th><th>Contact</th><th>Enrolled Class</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="studentDirectoryTable"></tbody>
+          </table>
+          <footer class="table-footer">
+            <span id="studentDirectoryCount">Showing 0 students</span>
+            <div class="pagination"><button>‹</button><button class="active">1</button><button>2</button><button>›</button></div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="studentModal" hidden>
+      <section class="staff-modal management-modal" role="dialog" aria-modal="true" aria-labelledby="studentModalTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow">Student Profile</p>
+            <h2 id="studentModalTitle">Add Student</h2>
+            <p id="studentModalHelp">Create or update learner information and class placement.</p>
+          </div>
+          <button class="modal-close" type="button" id="closeStudentModal" aria-label="Close student form">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+        <form class="staff-modal-body modal-form-grid" id="studentForm">
+          <input id="studentEditId" type="hidden" />
+          <div class="field-group">
+            <label for="studentName">Full Name</label>
+            <input id="studentName" required placeholder="e.g. Julian Thorne" />
+          </div>
+          <div class="field-group">
+            <label for="studentGrade">Grade</label>
+            <select id="studentGrade"><option>U16</option><option>U17</option><option>U18</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option></select>
+          </div>
+          <div class="field-group">
+            <label for="studentEmail">Email</label>
+            <input id="studentEmail" type="email" required placeholder="student@techroom.edu" />
+          </div>
+          <div class="field-group">
+            <label for="studentPhone">Phone</label>
+            <input id="studentPhone" placeholder="+1 (555) 000-0000" />
+          </div>
+          <div class="field-group">
+            <label for="studentGuardian">Guardian</label>
+            <input id="studentGuardian" placeholder="Guardian name" />
+          </div>
+          <div class="field-group">
+            <label for="studentStatus">Status</label>
+            <select id="studentStatus"><option>Active</option><option>On Leave</option><option>Withdrawn</option></select>
+          </div>
+          <div class="field-group modal-span">
+            <label for="studentClass">Enrolled Class</label>
+            <select id="studentClass"></select>
+          </div>
+        </form>
+        <footer class="staff-modal-actions">
+          <button class="secondary-button" type="button" id="cancelStudentModal">Cancel</button>
+          <div>
+            <button class="secondary-button danger-action" type="button" id="deleteStudentButton" hidden>Delete</button>
+            <button class="primary-button" type="submit" form="studentForm">Save Student</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

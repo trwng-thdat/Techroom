@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="rooms" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search facilities..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Facility Management</p>
+            <h1>Rooms & Facilities</h1>
+            <p class="page-subtitle">Manage room capacity, equipment, and availability.</p>
+          </div>
+          <button class="primary-button" type="button" id="addRoomButton">+ Add Room</button>
+        </section>
+
+        <section class="facility-grid" id="roomGrid" aria-label="Rooms and facilities"></section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="roomModal" hidden>
+      <section class="staff-modal management-modal" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow">Facility Profile</p>
+            <h2 id="roomModalTitle">Add Room</h2>
+            <p>Update room availability, capacity, and classroom tools.</p>
+          </div>
+          <button class="modal-close" type="button" id="closeRoomModal" aria-label="Close room form">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+        <form class="staff-modal-body modal-form-grid" id="roomForm">
+          <input id="roomEditId" type="hidden" />
+          <div class="field-group">
+            <label for="roomName">Room Name</label>
+            <input id="roomName" required placeholder="Room 204" />
+          </div>
+          <div class="field-group">
+            <label for="roomCapacity">Capacity</label>
+            <input id="roomCapacity" type="number" min="1" required placeholder="30" />
+          </div>
+          <div class="field-group">
+            <label for="roomLocation">Location</label>
+            <input id="roomLocation" required placeholder="Science Wing • Level 2" />
+          </div>
+          <div class="field-group">
+            <label for="roomStatus">Status</label>
+            <select id="roomStatus"><option>Available</option><option>In Use</option><option>Reserved</option><option>Maintenance</option></select>
+          </div>
+          <div class="field-group modal-span">
+            <label for="roomEquipment">Equipment</label>
+            <input id="roomEquipment" placeholder="Projector, Whiteboard, Lab Tools" />
+          </div>
+        </form>
+        <footer class="staff-modal-actions">
+          <button class="secondary-button" type="button" id="cancelRoomModal">Cancel</button>
+          <div>
+            <button class="secondary-button danger-action" type="button" id="deleteRoomButton" hidden>Delete</button>
+            <button class="primary-button" type="submit" form="roomForm">Save Room</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

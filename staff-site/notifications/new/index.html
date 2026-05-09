@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Notification | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="notifications" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Quick Search..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="breadcrumb">Notifications › <strong>Create New</strong></p>
+            <h1>Create Notification</h1>
+            <p class="page-subtitle">Communicate important updates to your academic community instantly.</p>
+          </div>
+        </section>
+
+        <form class="notification-form-card" id="notificationForm">
+          <section class="notification-form-body">
+            <h2>Notification Details</h2>
+            <div class="field-group">
+              <label for="notificationTitle">Notification Title</label>
+              <input id="notificationTitle" required placeholder="e.g., Campus Closure - Emergency" />
+            </div>
+            <div class="field-group">
+              <label for="notificationMessage">Message Content</label>
+              <textarea id="notificationMessage" required placeholder="Type your message here..."></textarea>
+            </div>
+            <div class="field-group">
+              <label for="notificationRecipients">Recipients</label>
+              <input id="notificationRecipients" required placeholder="Search for students, teachers or cohorts..." />
+              <div class="recipient-pills">
+                <button type="button" data-recipient="All Teachers">All Teachers</button>
+                <button type="button" data-recipient="All Students">All Students</button>
+                <button type="button" data-recipient="Specific Class">Specific Class</button>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Priority</label>
+              <div class="priority-grid">
+                <label><input name="priority" type="radio" value="Standard" checked /><span><strong>Standard</strong><small>General announcement</small></span></label>
+                <label><input name="priority" type="radio" value="High" /><span><strong>High (Alert)</strong><small>Action required</small></span></label>
+                <label><input name="priority" type="radio" value="Urgent" /><span><strong>Urgent (Emergency)</strong><small>Immediate notification</small></span></label>
+              </div>
+            </div>
+            <div class="delivery-row">
+              <div>
+                <p class="eyebrow">Scheduled Delivery</p>
+                <p>Decide when this notification should be sent.</p>
+              </div>
+              <div class="segmented-control">
+                <button class="active" type="button" data-delivery="Send now">Send now</button>
+                <button type="button" data-delivery="Schedule for later">Schedule for later</button>
+              </div>
+            </div>
+          </section>
+          <footer class="notification-form-actions">
+            <a class="text-danger" href="../index.html">Cancel</a>
+            <div>
+              <button class="secondary-button" type="button" id="saveDraftButton">Save Draft</button>
+              <button class="primary-button" type="submit">Send</button>
+            </div>
+          </footer>
+        </form>
+      </main>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

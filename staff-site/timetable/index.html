@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timetable | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="timetable" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search sessions..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Academic Year 2023/24</p>
+            <h1>Timetable Management</h1>
+          </div>
+          <div class="staff-toolbar">
+            <button class="secondary-button" type="button" data-toast="Filter view is demo-only.">
+              <svg viewBox="0 0 24 24"><path d="M3 5h18" /><path d="M7 12h10" /><path d="M10 19h4" /></svg>
+              Filter View
+            </button>
+            <a class="primary-button" href="new/index.html">+ Add Class Session</a>
+          </div>
+        </section>
+
+        <section class="timetable-shell" aria-label="Weekly timetable">
+          <div class="timetable-grid" id="timetableGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="sessionDetailModal" hidden>
+      <section class="staff-modal session-detail-modal" role="dialog" aria-modal="true" aria-labelledby="sessionDetailTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow" id="sessionDetailKicker">Session Details</p>
+            <h2 id="sessionDetailTitle">Class Session</h2>
+            <p id="sessionDetailMeta">Room and schedule details</p>
+          </div>
+          <button class="modal-close" type="button" id="closeSessionDetail" aria-label="Close session details">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+        <div class="staff-modal-body">
+          <div class="session-detail-grid">
+            <article class="session-action-panel">
+              <h3>Add Substitute Teacher</h3>
+              <p>Assign a temporary teacher for this timetable session.</p>
+              <div class="field-group">
+                <label for="substituteTeacher">Substitute Teacher</label>
+                <select id="substituteTeacher"></select>
+              </div>
+              <button class="primary-button" type="button" id="assignSubstitute">Assign Substitute</button>
+            </article>
+            <article class="session-action-panel">
+              <h3>Add Makeup Students</h3>
+              <p>Select students approved to attend this session as makeup learners.</p>
+              <div class="makeup-student-list" id="makeupStudentList"></div>
+              <button class="primary-button" type="button" id="addMakeupStudents">Add Makeup Students</button>
+            </article>
+          </div>
+          <section class="assigned-summary">
+            <h3>Session Updates</h3>
+            <div id="sessionAssignments"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

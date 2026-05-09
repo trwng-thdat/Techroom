@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Class | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="classes" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search resources..."></div>
+
+        <section>
+          <p class="eyebrow">Curriculum Management</p>
+          <h1>Create New Class</h1>
+          <p class="page-subtitle">Configure the academic environment for the upcoming semester. Assign specialized staff and curate the student body for high-performance learning cohorts.</p>
+        </section>
+
+        <section class="form-card">
+          <form class="class-form" id="createClassForm" novalidate>
+            <div class="field-group">
+              <label for="className">Class Name</label>
+              <input class="error" id="className" type="text" placeholder="e.g. Advanced Robotics U17-A" />
+              <p class="error-text" id="classNameError">Required field</p>
+            </div>
+            <div class="field-group">
+              <label for="duration">Total Duration</label>
+              <select id="duration">
+                <option>6 months (Full semester)</option>
+                <option>3 months (Short track)</option>
+                <option>8 weeks (Intensive)</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="course">Course</label>
+              <select id="course">
+                <option value="">Select an academic track</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="english">English</option>
+                <option value="computerScience">Computer Science</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="teacher">Assign Teacher</label>
+              <input id="teacher" type="text" placeholder="Search by name or department..." />
+            </div>
+            <div class="field-group">
+              <label for="startDate">Start Date</label>
+              <input id="startDate" type="date" />
+            </div>
+            <div class="field-group">
+              <div class="field-label-row">
+                <label>Assign Students</label>
+                <button class="text-button" type="button" id="openStudentBrowser">Browse Students</button>
+              </div>
+              <div class="student-picker" id="studentPicker">
+                <input id="studentInput" type="text" placeholder="Add more students..." />
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Sessions Per Week</label>
+              <div class="sessions-rule-card">
+                <strong id="sessionsPerWeek">-</strong>
+                <span id="sessionsRuleNote">Select a course to apply its required weekly sessions.</span>
+              </div>
+            </div>
+            <footer class="form-actions">
+              <span>New cohorts will be automatically synced to the main Timetable.</span>
+              <div>
+                <a class="secondary-button" href="../index.html">Cancel</a>
+                <button class="primary-button" type="submit">Save Class →</button>
+              </div>
+            </footer>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="studentBrowserModal" hidden>
+      <section class="staff-modal" role="dialog" aria-modal="true" aria-labelledby="studentBrowserTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow">Class Roster</p>
+            <h2 id="studentBrowserTitle">Add Students</h2>
+            <p>Search the student directory and add learners to this new class roster.</p>
+          </div>
+          <button class="modal-close" type="button" id="closeStudentBrowser" aria-label="Close student browser">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+        <div class="staff-modal-body">
+          <label class="staff-search modal-search">
+            <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+            <input id="studentBrowserSearch" type="search" placeholder="Search by student name, ID, or grade..." />
+          </label>
+          <div class="available-student-list" id="studentBrowserList"></div>
+        </div>
+        <footer class="staff-modal-actions">
+          <span id="browserSelectedCount">0 students selected</span>
+          <div>
+            <button class="secondary-button" type="button" id="cancelStudentBrowser">Cancel</button>
+            <button class="primary-button" type="button" id="addBrowserStudents">Add Selected Students</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

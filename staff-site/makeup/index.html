@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makeup Sessions | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="makeup" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search students..."></div>
+        <section class="class-page-head makeup-head">
+          <div>
+            <h1>Pending Absence Requests</h1>
+            <p class="page-subtitle">Review and process student makeup class requests.</p>
+          </div>
+        </section>
+
+        <section class="makeup-queue-card">
+          <header class="queue-card-head">
+            <h2>Queue</h2>
+            <label class="inline-filter">
+              <span>Filter by:</span>
+              <select id="makeupStatusFilter">
+                <option value="">All Statuses</option>
+                <option>Approved Absence</option>
+                <option>Pending</option>
+              </select>
+            </label>
+          </header>
+          <table class="data-table makeup-table">
+            <thead>
+              <tr><th>Student Name</th><th>Original Class</th><th>Missed Date</th><th>Status</th><th>Action</th></tr>
+            </thead>
+            <tbody id="makeupRequestTable"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

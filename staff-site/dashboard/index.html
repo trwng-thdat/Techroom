@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="dashboard" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header"></div>
+
+        <section aria-labelledby="dashboard-title">
+          <h1 id="dashboard-title">Academic Overview</h1>
+          <p class="page-subtitle">Welcome back, Staff. Here is what is happening across the campus today.</p>
+        </section>
+
+        <section class="dashboard-metrics" id="metricGrid" aria-label="Academic metrics"></section>
+
+        <section class="dashboard-grid">
+          <article class="staff-panel">
+            <div class="panel-head">
+              <h2>Weekly Class Utilization</h2>
+              <button class="secondary-button" type="button" data-toast="Showing current week data.">Current Week</button>
+            </div>
+            <div class="utilization-chart" id="utilizationChart"></div>
+          </article>
+
+          <article class="staff-panel">
+            <h2>Quick Actions</h2>
+            <div class="quick-actions">
+              <button type="button" data-toast="Notification composer is demo-only."><svg viewBox="0 0 24 24"><path d="M3 11v2h4l8 5V6l-8 5H3Z" /><path d="M19 9a4 4 0 0 1 0 6" /></svg>Create Notification</button>
+              <button type="button" id="exportDashboard"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M7 10l5 5 5-5" /><path d="M12 15V3" /></svg>Export Reports</button>
+              <button type="button" data-toast="Student quick-add is demo-only."><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /><path d="M19 8v6" /><path d="M22 11h-6" /></svg>Add Student</button>
+              <button type="button" data-toast="Makeup session scheduler is demo-only."><svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16" /><path d="M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2Z" /><path d="M12 13v4M10 15h4" /></svg>Schedule Makeup</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="staff-panel">
+            <h2>Live Classes Right Now</h2>
+            <table class="data-table">
+              <thead><tr><th>Class Name</th><th>Room</th><th>Teacher</th><th>Status</th></tr></thead>
+              <tbody id="liveClassTable"></tbody>
+            </table>
+          </article>
+
+          <article class="staff-panel">
+            <h2 class="eyebrow">System Health</h2>
+            <div class="facility-list">
+              <article class="facility-item"><div><h3>Global Server Status</h3></div><span class="status-pill">Operational</span></article>
+              <article class="facility-item"><div><h3>Database Connectivity</h3></div><span class="status-pill">Connected</span></article>
+              <small>Last checked 2 minutes ago</small>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="staff-panel">
+            <h2>Recent Notifications</h2>
+            <div class="notification-list" id="recentNotifications"></div>
+          </article>
+          <article class="staff-panel">
+            <h2>Facility Alerts</h2>
+            <div class="facility-list">
+              <article class="facility-item alert"><div class="notice-icon danger">×</div><div><h3>Active Maintenance</h3><p>Room 302 projector maintenance required. Technician scheduled for 4:00 PM.</p></div></article>
+              <article class="facility-item"><div class="notice-icon success">✓</div><div><h3>Resolved</h3><p>HVAC system in Science Wing has been repaired and tested.</p></div></article>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
