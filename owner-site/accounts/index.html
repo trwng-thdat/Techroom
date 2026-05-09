@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Management | Admin Portal</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="owner-sidebar" data-active="accounts" data-depth=".."></div>
+      <main class="content">
+        <div id="owner-header"></div>
+        <section class="page-heading" aria-labelledby="accounts-title">
+          <div>
+            <p class="eyebrow">Organization Workspace</p>
+            <h1 id="accounts-title">Account Management</h1>
+          </div>
+          <a class="primary-button action-link" href="new/index.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /><path d="M19 8v6" /><path d="M22 11h-6" /></svg>
+            Add New Account
+          </a>
+        </section>
+
+        <section class="filter-panel" aria-label="Account filters">
+          <div class="segmented" role="tablist" aria-label="Account role filters">
+            <button class="segment active" type="button" data-role="all">All Accounts</button>
+            <button class="segment" type="button" data-role="Teacher">Teachers</button>
+            <button class="segment" type="button" data-role="Staff">Staff</button>
+            <button class="segment" type="button" data-role="Student">Students</button>
+          </div>
+          <div class="status-filter">
+            <span>Status:</span>
+            <select id="accountStatus">
+              <option value="Active">Active</option>
+              <option value="all">All</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+            <button class="text-icon-button" type="button" data-toast="Advanced filters are ready for the production admin portal.">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18" /><path d="M7 12h10" /><path d="M10 19h4" /></svg>
+              Advanced Filters
+            </button>
+          </div>
+        </section>
+
+        <section class="table-card account-card" aria-label="Accounts">
+          <table class="data-table account-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Contact Information</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="accountTable"></tbody>
+          </table>
+          <footer class="table-footer">
+            <span id="accountCount">Showing 0 accounts</span>
+            <div class="pagination" aria-label="Account pagination">
+              <button type="button" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg></button>
+              <button class="active" type="button">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <button type="button" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg></button>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="deactivateModal" hidden>
+      <section class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="deactivateTitle">
+        <div class="warning-icon"><svg viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg></div>
+        <h2 id="deactivateTitle">Deactivate Account?</h2>
+        <p>This will prevent the user from logging into the system. This action can be undone later through the administrative recovery portal.</p>
+        <div class="modal-user" id="modalUser"></div>
+        <div class="modal-actions">
+          <button class="secondary-button" type="button" id="cancelDeactivate">Cancel</button>
+          <button class="danger-button" type="button" id="confirmDeactivate">Confirm Deactivate</button>
+        </div>
+        <footer>Audit log will be recorded for this action</footer>
+      </section>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

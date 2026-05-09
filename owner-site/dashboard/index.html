@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Center Overview | Admin Portal</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="owner-sidebar" data-active="dashboard" data-depth=".."></div>
+      <main class="content dashboard-content" id="reportArea">
+        <div id="owner-header"></div>
+
+        <section class="dashboard-heading" aria-labelledby="dashboard-title">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1 id="dashboard-title">Center Overview</h1>
+          </div>
+          <div class="dashboard-actions">
+            <div class="range-tabs" aria-label="Dashboard range shortcuts">
+              <button class="active" type="button" data-range="30">Last 30 Days</button>
+              <button type="button" data-range="180">Last 6 Months</button>
+            </div>
+            <button class="secondary-button action-link" type="button" id="exportReport">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M7 10l5 5 5-5" /><path d="M12 15V3" /></svg>
+              Export Report
+            </button>
+          </div>
+        </section>
+
+        <section class="report-filter-panel" aria-label="Report filters">
+          <div class="report-field">
+            <label>Date Range</label>
+            <div class="date-range-control">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3" /><path d="M17 3v3" /><path d="M4 9h16" /><path d="M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+              <input id="startDate" type="date" value="2023-10-01" aria-label="Start date" />
+              <span>-</span>
+              <input id="endDate" type="date" value="2024-03-28" aria-label="End date" />
+            </div>
+          </div>
+          <div class="report-field">
+            <label for="courseCategory">Course Category</label>
+            <div class="select-control">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18" /><path d="M5 8h14" /><path d="M7 16h10" /><path d="M5 21h14" /></svg>
+              <select id="courseCategory">
+                <option>All Technologies</option>
+                <option>Mathematics</option>
+                <option>Science</option>
+                <option>English</option>
+                <option>Computer Science</option>
+              </select>
+            </div>
+          </div>
+          <button class="filter-square" type="button" id="applyFilters" aria-label="Apply dashboard filters">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18" /><path d="M7 12h10" /><path d="M10 19h4" /></svg>
+          </button>
+        </section>
+
+        <section class="overview-metrics" aria-label="Center overview metrics">
+          <article class="overview-card">
+            <div class="overview-top"><span><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /><path d="M4 20a8 8 0 0 1 16 0" /></svg></span><b>+12%</b></div>
+            <strong id="studentTotal">1,240</strong>
+            <p>Total Students</p>
+          </article>
+          <article class="overview-card">
+            <div class="overview-top"><span><svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v14l-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2Z" /></svg></span><b>+4</b></div>
+            <strong id="activeClasses">48</strong>
+            <p>Active Classes</p>
+          </article>
+          <article class="overview-card">
+            <div class="overview-top"><span><svg viewBox="0 0 24 24"><path d="M6 7h12v14H6z" /><path d="M9 7V5a3 3 0 0 1 6 0v2" /></svg></span><b class="critical">Critical</b></div>
+            <strong id="teacherWorkload">82%</strong>
+            <p>Teacher Workload</p>
+          </article>
+          <article class="overview-card">
+            <div class="overview-top"><span><svg viewBox="0 0 24 24"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6" /></svg></span><b>+$2.1k</b></div>
+            <strong id="monthlyRevenue">$12,450</strong>
+            <p>Revenue This Month</p>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="dashboard-panel trend-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Enrollment Trends</h2>
+                <p>Student growth and retention performance</p>
+              </div>
+              <button class="icon-button" type="button" data-toast="Trend options are demo-only." aria-label="Trend options">...</button>
+            </div>
+            <div class="enrollment-chart" id="enrollmentChart" aria-label="Enrollment chart"></div>
+          </article>
+
+          <article class="dashboard-panel occupancy-panel" aria-label="Campus occupancy">
+            <div class="occupancy-diamond">
+              <div>
+                <strong id="occupancyValue">74%</strong>
+                <span>Occupied</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-panel teacher-summary">
+          <div class="section-heading">
+            <div>
+              <h2>Teacher Performance Summary</h2>
+              <p>Individual workload and efficiency tracking</p>
+            </div>
+            <button class="text-icon-button" type="button" data-toast="Personnel directory opened.">View All Personnel</button>
+          </div>
+          <table class="data-table performance-table">
+            <thead>
+              <tr>
+                <th>Instructor</th>
+                <th>Course Specialization</th>
+                <th>Workload</th>
+                <th>Student Feedback</th>
+                <th>Revenue Cont.</th>
+              </tr>
+            </thead>
+            <tbody id="teacherPerformance"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
