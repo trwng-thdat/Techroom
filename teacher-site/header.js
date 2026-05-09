@@ -26,7 +26,7 @@
         <button class="profile-chip" type="button" aria-label="Teacher profile">
           <span>
             <strong>N. Minh Khoa</strong>
-            <small>STUDENT ID: 0847</small>
+            <small>TEACHER ID: 0847</small>
           </span>
           <span class="profile-avatar">K</span>
         </button>
