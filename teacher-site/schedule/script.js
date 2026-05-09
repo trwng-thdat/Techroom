@@ -1,27 +1,60 @@
-const sessions = window.TeacherData.sessions;
+/* ============================================================
+   schedule/script.js
+   Reads: window.TeacherData.sessions
+   Features:
+     - Sort chronologically (earliest → latest)
+     - Paginate: PAGE_SIZE sessions per page
+     - Auto-jump to the page containing today's session on load
+     - "View Roster" / "Take Attendance" → modal placeholder
+     - Prev / Next page buttons with disabled states
+   ============================================================ */
 
-const sessionList = document.querySelector("#sessionList");
-const sessionCount = document.querySelector("#sessionCount");
+const PAGE_SIZE = 4;
 
-function getStatusClass(status) {
+// Sort sessions chronologically by date string
+const allSessions = [...window.TeacherData.sessions].sort((a, b) => {
+  return new Date(a.date) - new Date(b.date);
+});
+
+const total = allSessions.length;
+
+// Find the page that contains today's session (if any)
+const todayIndex = allSessions.findIndex((s) => s.today || s.current);
+const initialPage = todayIndex >= 0 ? Math.floor(todayIndex / PAGE_SIZE) : 0;
+
+let currentPage = initialPage;
+
+// DOM refs
+const sessionList  = document.getElementById("sessionList");
+const sessionCount = document.getElementById("sessionCount");
+const prevBtn      = document.getElementById("prevPage");
+const nextBtn      = document.getElementById("nextPage");
+
+// ── Helpers ───────────────────────────────────────
+function statusClass(status) {
   return status.toLowerCase().replace(/\s+/g, "-");
 }
 
 function renderAction(session) {
   if (!session.action) {
-    return '<span class="unavailable">Not Available</span>';
+    return `<span class="unavailable">Not Available</span>`;
   }
-
-  const buttonClass = session.status === "In Progress" ? "action-button primary" : "action-button";
-
-  return `<button class="${buttonClass}" type="button" data-action="${session.action}">${session.action}</button>`;
+  const cls = session.status === "In Progress" ? "action-button primary" : "action-button secondary";
+  return `<button class="${cls}" type="button" data-action="${session.action}">${session.action}</button>`;
 }
 
-function renderSessions() {
-  sessionList.innerHTML = sessions
+// ── Render ────────────────────────────────────────
+function render() {
+  const start = currentPage * PAGE_SIZE;
+  const end   = Math.min(start + PAGE_SIZE, total);
+  const page  = allSessions.slice(start, end);
+
+  sessionList.innerHTML = page
     .map((session) => {
-      const rowClass = session.current ? "session-row is-current" : "session-row";
-      const todayBadge = session.today ? '<span class="today-badge">TODAY</span>' : "";
+      const rowClass  = (session.current || session.today) ? "session-row is-current" : "session-row";
+      const todayBadge = session.today
+        ? `<span class="today-badge">TODAY</span>`
+        : "";
 
       return `
         <div class="${rowClass}" role="row">
@@ -30,55 +63,59 @@ function renderSessions() {
             <small>${session.day}</small>
           </div>
           <span class="time-cell" role="cell">
-            <svg viewBox="0 0 24 24"><path d="M12 7v5l3 2" /><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" /></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
             ${session.time}
           </span>
-          <span class="status-pill ${getStatusClass(session.status)}" role="cell">${session.status.toUpperCase()}</span>
-          <div class="action-cell" role="cell">${renderAction(session)}</div>
-        </div>
-      `;
+          <span class="status-pill ${statusClass(session.status)}" role="cell">
+            ${session.status.toUpperCase()}
+          </span>
+          <div class="action-cell" role="cell">
+            ${renderAction(session)}
+          </div>
+        </div>`;
     })
     .join("");
 
-  sessionCount.textContent = `Showing ${sessions.length} of 28 scheduled sessions`;
+  // Footer count
+  sessionCount.textContent = `Showing ${end - start} of ${total} scheduled sessions`;
+
+  // Pagination button states
+  prevBtn.disabled = currentPage === 0;
+  nextBtn.disabled = end >= total;
 }
 
-const tooltip = document.createElement("div");
-tooltip.className = "session-tooltip";
-tooltip.hidden = true;
-document.body.appendChild(tooltip);
-
-sessionList.addEventListener("mouseover", (event) => {
-  const row = event.target.closest(".session-row");
-  if (!row) return;
-
-  const date = row.querySelector(".date-cell strong").textContent.replace("TODAY", "").trim();
-  const day = row.querySelector(".date-cell small").textContent;
-  const time = row.querySelector(".time-cell").textContent.trim();
-  const status = row.querySelector(".status-pill").textContent.trim();
-
-  tooltip.textContent = `${date} (${day}) - ${time} - ${status}`;
-  tooltip.hidden = false;
-
-  const rect = row.getBoundingClientRect();
-  tooltip.style.left = Math.min(rect.left + 20, window.innerWidth - tooltip.offsetWidth - 16) + "px";
-  tooltip.style.top = (rect.top - tooltip.offsetHeight - 8) + "px";
-});
-
-sessionList.addEventListener("mouseout", (event) => {
-  if (event.target.closest(".session-row")) {
-    tooltip.hidden = true;
+// ── Pagination buttons ────────────────────────────
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 0) {
+    currentPage--;
+    render();
+    sessionList.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 });
 
-sessionList.addEventListener("click", (event) => {
-  const actionButton = event.target.closest(".action-button");
-
-  if (!actionButton) {
-    return;
+nextBtn.addEventListener("click", () => {
+  const maxPage = Math.ceil(total / PAGE_SIZE) - 1;
+  if (currentPage < maxPage) {
+    currentPage++;
+    render();
+    sessionList.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
-
-  showModal(`${actionButton.dataset.action} flow will be added next.`);
 });
 
-renderSessions();
+// ── Action button clicks ──────────────────────────
+sessionList.addEventListener("click", (e) => {
+  const btn = e.target.closest(".action-button");
+  if (!btn) return;
+
+  if (btn.dataset.action === "Take Attendance") {
+    window.location.href = "../attendance/index.html";
+  } else {
+    showModal(`${btn.dataset.action} — roster view will be added next.`);
+  }
+});
+
+// ── Initial render ────────────────────────────────
+render();

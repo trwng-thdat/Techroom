@@ -10,8 +10,16 @@ const { assignments, submissions, students } = window.TeacherData;
 
 // ── Resolve assignment from URL param ─────────────────────────
 const params = new URLSearchParams(window.location.search);
-const assignmentTitle = params.get("assignment") || assignments[0].title;
-const assignment = assignments.find((a) => a.title === assignmentTitle) || assignments[0];
+const assignmentTitle = params.get("assignment");
+const assignment = (assignments.length > 0)
+  ? assignments.find((a) => a.title === assignmentTitle) || assignments[0]
+  : null;
+
+if (!assignment) {
+  document.title = "No Assignment — Submissions | Teacher";
+  document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;color:#6f7d79;font-family:sans-serif;font-size:14px;">No assignments found. <a href="../assignments/index.html" style="margin-left:8px;color:#007a66;">Create one</a></div>';
+  throw new Error("No assignment available");
+}
 
 // ── Student lookup map ────────────────────────────────────────
 const studentMap = {};
