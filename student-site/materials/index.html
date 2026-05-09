@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Materials | Techroom Student Portal</title>
+    <meta name="description" content="View and download class materials, lecture notes, and resources for your enrolled courses." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-classes"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="../absence-requests/index.html"
+        data-schedule-href="../schedule/index.html"
+        data-profile-href="../profile/index.html"
+        data-settings-href="#"
+      ></div>
+
+      <main class="content" id="page-top">
+        <div
+          id="header-container"
+          data-back-href="../class-detail/index.html"
+          data-profile-href="../profile/index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
+
+        <nav class="page-tabs" aria-label="Class sections">
+          <a class="tab-link" href="../class-detail/index.html" id="overviewTab">Overview</a>
+          <button class="tab-link active" id="materialsTab" type="button">Materials</button>
+          <a class="tab-link" href="../assignments/index.html" id="assignmentsTab">Assignments</a>
+        </nav>
+
+        <div class="materials-layout">
+          <!-- File list panel -->
+          <section class="file-list-panel" aria-label="Course materials list">
+            <table class="file-table" aria-label="Materials">
+              <thead>
+                <tr>
+                  <th class="col-name">File Name</th>
+                  <th class="col-author">Author &amp; Date</th>
+                  <th class="col-size">Size</th>
+                </tr>
+              </thead>
+              <tbody id="materialsList">
+                <!-- Populated by script.js -->
+              </tbody>
+            </table>
+          </section>
+
+          <!-- File preview panel -->
+          <aside class="preview-panel" id="previewPanel" aria-label="File preview">
+            <div class="preview-header">
+              <span class="preview-label">FILE PREVIEW</span>
+              <button class="preview-close-btn" id="previewCloseBtn" type="button" aria-label="Close preview">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <div class="preview-body" id="previewBody">
+              <div class="preview-empty-state">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="preview-empty-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                <p>Select a file to preview</p>
+              </div>
+            </div>
+
+            <div class="preview-meta" id="previewMeta" hidden>
+              <h2 class="preview-filename" id="previewFilename"></h2>
+              <div class="preview-stats" id="previewStats"></div>
+            </div>
+
+            <div class="preview-actions" id="previewActions" hidden>
+              <button class="btn-download" id="btnDownload" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Material
+              </button>
+              <button class="btn-fullscreen" id="btnFullscreen" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                Full Screen View
+              </button>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var code = params.get('code');
+        if (code) {
+          var overviewTab = document.getElementById('overviewTab');
+          var assignmentsTab = document.getElementById('assignmentsTab');
+          if (overviewTab) overviewTab.href = '../class-detail/index.html?code=' + code;
+          if (assignmentsTab) assignmentsTab.href = '../assignments/index.html?code=' + code;
+          var headerContainer = document.getElementById('header-container');
+          if (headerContainer) headerContainer.dataset.backHref = '../class-detail/index.html?code=' + code;
+          var sidebarContainer = document.getElementById('sidebar-container');
+          if (sidebarContainer) sidebarContainer.dataset.assignmentsHref = '../assignments/index.html?code=' + code;
+        }
+      })();
+    </script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

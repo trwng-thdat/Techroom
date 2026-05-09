@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Profile | Techroom</title>
+    <meta name="description" content="View and manage your student profile, personal information, and enrolled classes." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="profile"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="../absence-requests/index.html"
+        data-schedule-href="../schedule/index.html"
+        data-profile-href="index.html"
+        data-settings-href="#"
+      ></div>
+
+      <main class="content" id="page-top">
+        <div
+          id="header-container"
+          data-back-href="../index.html"
+          data-profile-href="index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
+
+        <div class="profile-page">
+
+          <!-- ── Hero / identity card ── -->
+          <section class="identity-card" aria-label="Student identity">
+            <div class="identity-left">
+              <div class="identity-avatar" id="identityAvatar">MS</div>
+              <div class="identity-info">
+                <div class="identity-name-row">
+                  <h1 id="identityName">Maya Sterling</h1>
+                  <span class="badge badge-active" id="identityStatus">Active Student</span>
+                  <span class="badge badge-grade" id="identityGrade">Grade 10</span>
+                  <span class="badge badge-year" id="identityYear">2024–2025</span>
+                </div>
+                <p class="identity-id" id="identityId">STU-2024-0847</p>
+                <div class="identity-meta-row">
+                  <span class="identity-meta-item" id="identityLocation">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><path d="M12 10h.01"/></svg>
+                    Ho Chi Minh City, VN
+                  </span>
+                  <span class="identity-meta-item" id="identityJoined">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+                    Joined Aug 12, 2024
+                  </span>
+                  <span class="identity-meta-item" id="identityClassCount">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 4l8 3.5-8 3.5-8-3.5Z"/><path d="M4 11.5 12 15l8-3.5"/><path d="M4 15.5 12 19l8-3.5"/></svg>
+                    3 Active Classes
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── Body grid ── -->
+          <div class="profile-body">
+
+            <!-- Left column -->
+            <div class="profile-left">
+
+              <!-- Personal Information -->
+              <article class="info-card" aria-labelledby="personalInfoHeading">
+                <h2 id="personalInfoHeading">Personal information</h2>
+                <div class="info-grid">
+                  <div class="info-field">
+                    <span class="field-label">FULL NAME</span>
+                    <span class="field-value" id="pfFullName">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">DATE OF BIRTH</span>
+                    <span class="field-value" id="pfDob">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">PHONE NUMBER</span>
+                    <span class="field-value" id="pfPhone">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">EMAIL</span>
+                    <span class="field-value" id="pfEmail">—</span>
+                  </div>
+                  <div class="info-field info-field--full">
+                    <span class="field-label">ADDRESS</span>
+                    <span class="field-value" id="pfAddress">—</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Parent / Guardian -->
+              <article class="info-card" aria-labelledby="guardianHeading">
+                <h2 id="guardianHeading">Parent / Guardian</h2>
+                <div class="info-grid">
+                  <div class="info-field">
+                    <span class="field-label">NAME</span>
+                    <span class="field-value" id="gdName">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">RELATIONSHIP</span>
+                    <span class="field-value" id="gdRelationship">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">PHONE</span>
+                    <span class="field-value" id="gdPhone">—</span>
+                  </div>
+                  <div class="info-field">
+                    <span class="field-label">EMAIL</span>
+                    <span class="field-value" id="gdEmail">—</span>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Right column -->
+            <aside class="profile-right">
+              <article class="classes-card" aria-labelledby="myClassesHeading">
+                <h2 id="myClassesHeading">My classes</h2>
+                <ul class="class-list" id="profileClassList" role="list"></ul>
+              </article>
+            </aside>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

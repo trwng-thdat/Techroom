@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Timetable | Techroom</title>
+    <meta name="description" content="View your weekly class schedule and upcoming sessions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="schedule"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="../absence-requests/index.html"
+        data-schedule-href="index.html"
+        data-profile-href="../profile/index.html"
+        data-settings-href="#"
+      ></div>
+
+      <main class="content">
+        <div
+          id="header-container"
+          data-back-href="../index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
+
+        <div class="schedule-page">
+
+          <!-- Page header row -->
+          <div class="page-header">
+            <div class="page-header-left">
+              <span class="page-eyebrow">YOUR SCHEDULE</span>
+              <h1>My Timetable</h1>
+            </div>
+            <div class="page-header-right">
+              <div class="week-nav">
+                <button class="week-nav-btn" id="prevWeekBtn" type="button" aria-label="Previous week">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <span class="week-range" id="weekRange">Mar 31 – Apr 6, 2026</span>
+                <button class="week-nav-btn" id="nextWeekBtn" type="button" aria-label="Next week">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+              <button class="today-btn" id="todayBtn" type="button">Today</button>
+              <div class="view-tabs" role="tablist" aria-label="Calendar view">
+                <button class="view-tab active" data-view="week" type="button" role="tab" aria-selected="true">Week</button>
+                <button class="view-tab" data-view="month" type="button" role="tab" aria-selected="false">Month</button>
+                <button class="view-tab" data-view="list" type="button" role="tab" aria-selected="false">List</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar card -->
+          <div class="calendar-card" id="calendarCard">
+
+            <!-- Week view -->
+            <div class="view-panel active" id="weekView">
+              <div class="week-grid-wrap">
+                <!-- Day headers -->
+                <div class="week-grid-header">
+                  <div class="time-gutter"></div>
+                  <div class="day-columns" id="dayColumns"></div>
+                </div>
+                <!-- Body -->
+                <div class="week-grid-body">
+                  <div class="time-column" id="timeColumn"></div>
+                  <div class="events-layer" id="eventsLayer">
+                    <div class="hour-lines" id="hourLines"></div>
+                    <div class="event-blocks" id="eventBlocks"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Month view (simple) -->
+            <div class="view-panel" id="monthView">
+              <div class="month-grid" id="monthGrid"></div>
+            </div>
+
+            <!-- List view -->
+            <div class="view-panel" id="listView">
+              <p class="list-hint">List view groups sessions by date.</p>
+              <div class="list-sessions" id="listSessions"></div>
+            </div>
+
+          </div>
+
+          <!-- Footer legend + stats -->
+          <div class="schedule-footer">
+            <div class="legend" id="legend" aria-label="Subject color legend"></div>
+            <div class="footer-stats">
+              <span class="stat-chip" id="weekCount">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+                <span id="weekCountText">This week: 0 sessions</span>
+              </span>
+              <span class="stat-chip" id="nextSessionChip">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>
+                <span id="nextSessionText">Next session: —</span>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Session tooltip -->
+        <div class="event-tooltip" id="eventTooltip" hidden role="tooltip"></div>
+
+        <!-- Toast -->
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

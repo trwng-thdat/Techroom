@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Assignment Detail | Student</title>
+    <title>Assignment Detail | Techroom Student Portal</title>
+    <meta name="description" content="View assignment details, submit work, and review grades for your enrolled courses." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -15,9 +19,9 @@
         data-home-href="../index.html"
         data-classes-href="../index.html"
         data-assignments-href="../assignments/index.html"
-        data-absence-href="#"
-        data-schedule-href="#"
-        data-profile-href="#"
+        data-absence-href="../absence-requests/index.html"
+        data-schedule-href="../schedule/index.html"
+        data-profile-href="../profile/index.html"
         data-settings-href="#"
       ></div>
 
@@ -25,15 +29,139 @@
         <div
           id="header-container"
           data-back-href="../assignments/index.html"
+          data-profile-href="../profile/index.html"
           data-profile-name="Maya Sterling"
           data-profile-role="Student"
           data-avatar="MS"
           data-avatar-color="#f39b54"
         ></div>
 
-        <section class="assignment-shell">
+        <!-- ═══════════════════════════════════════════════════════════
+             GRADED VIEW — shown when assignment.status === "graded"
+        ════════════════════════════════════════════════════════════ -->
+        <div id="gradedView" class="graded-view" hidden>
+          <!-- Title row -->
+          <div class="graded-title-section">
+            <h1 id="gradedTitle">Assignment</h1>
+            <p class="graded-subtitle" id="gradedSubtitle"></p>
+          </div>
+
+          <div class="graded-layout">
+            <!-- Left column -->
+            <div class="graded-main">
+
+              <!-- Overall grade card -->
+              <article class="grade-card">
+                <p class="grade-card-label">OVERALL GRADE</p>
+                <div class="grade-score-row">
+                  <span class="grade-score-big" id="gradeScoreBig">88</span>
+                  <span class="grade-score-denom" id="gradeScoreDenom">/100</span>
+                </div>
+                <div class="grade-bar-wrap">
+                  <div class="grade-bar-track">
+                    <div class="grade-bar-fill" id="gradeBarFill" style="width:88%"></div>
+                  </div>
+                </div>
+
+                <!-- Instructor feedback -->
+                <div class="grade-feedback">
+                  <div class="feedback-author">
+                    <span class="feedback-avatar" id="feedbackAvatar">ET</span>
+                    <div>
+                      <p class="feedback-name" id="feedbackName">Dr. Emily Thorne</p>
+                      <small class="feedback-time" id="feedbackTime">Feedback 2 hours ago</small>
+                    </div>
+                  </div>
+                  <blockquote class="feedback-quote" id="feedbackQuote">
+                    No feedback provided.
+                  </blockquote>
+                </div>
+              </article>
+
+              <!-- Assignment Info card -->
+              <article class="info-card content-block">
+                <h2>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  Assignment Info
+                </h2>
+                <p class="info-card-label">INSTRUCTIONS</p>
+                <p id="gradedInstructions" class="info-card-text"></p>
+
+                <div id="gradedReferenceFiles" class="graded-ref-list"></div>
+              </article>
+
+              <!-- Your Submission card -->
+              <article class="submission-card content-block">
+                <h2>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Your Submission
+                </h2>
+                <div id="gradedSubmissionFiles" class="graded-submission-list"></div>
+              </article>
+
+              <!-- Status Reference Views -->
+              <div class="status-ref-section">
+                <p class="status-ref-label">STATUS REFERENCE VIEWS</p>
+                <div class="status-ref-grid">
+                  <div class="status-ref-card status-ref-submitted">
+                    <div class="status-ref-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <div class="status-ref-info">
+                      <strong>Submitted — Awaiting Grade</strong>
+                      <p>Submission confirmed. Feedback will appear here once published by teacher.</p>
+                    </div>
+                    <span class="status-ref-badge badge-pending">PENDING</span>
+                  </div>
+                  <div class="status-ref-card status-ref-missed">
+                    <div class="status-ref-icon status-ref-icon--missed">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </div>
+                    <div class="status-ref-info">
+                      <strong>Not Submitted — Deadline Passed</strong>
+                      <p>The submission window closed on Oct 26. Please contact your instructor.</p>
+                    </div>
+                    <span class="status-ref-badge badge-missed">MISSED</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right sidebar -->
+            <aside class="graded-side">
+              <article class="side-status-card">
+                <div class="side-status-header">
+                  <span class="side-status-title">SUBMISSION STATUS</span>
+                  <span class="graded-badge">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg>
+                    GRADED
+                  </span>
+                </div>
+                <dl class="side-status-list">
+                  <div class="side-status-row">
+                    <dt>Submitted on</dt>
+                    <dd id="statusSubmittedOn">—</dd>
+                  </div>
+                  <div class="side-status-row">
+                    <dt>Graded on</dt>
+                    <dd id="statusGradedOn">—</dd>
+                  </div>
+                  <div class="side-status-row">
+                    <dt>Attempt</dt>
+                    <dd id="statusAttempt">1 of 1</dd>
+                  </div>
+                </dl>
+              </article>
+            </aside>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             STANDARD VIEW — not-submitted / submitted states
+        ════════════════════════════════════════════════════════════ -->
+        <section class="assignment-shell" id="standardView" hidden>
           <div class="assignment-main">
-            <p class="breadcrumbs" id="breadcrumbs">My Classes > Assignment</p>
+            <p class="breadcrumbs" id="breadcrumbs">My Classes &gt; Assignment</p>
 
             <h1 id="assignmentTitle">Assignment</h1>
 
@@ -62,16 +190,8 @@
 
             <section class="submit-card">
               <div class="submit-tabs">
-                <button
-                  class="submit-tab active"
-                  data-mode="upload"
-                  type="button"
-                >
-                  Upload File
-                </button>
-                <button class="submit-tab" data-mode="text" type="button">
-                  Text Response
-                </button>
+                <button class="submit-tab active" data-mode="upload" type="button">Upload File</button>
+                <button class="submit-tab" data-mode="text" type="button">Text Response</button>
               </div>
 
               <div id="uploadMode" class="submit-panel active">
@@ -80,26 +200,15 @@
                   <strong>Click to upload or drag and drop</strong>
                   <small>PDF, DOCX, XLSX, JPG up to 25MB</small>
                 </label>
-                <input
-                  id="submissionFileInput"
-                  type="file"
-                  multiple
-                  accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png"
-                />
+                <input id="submissionFileInput" type="file" multiple accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png" />
                 <div id="selectedFiles" class="selected-files"></div>
               </div>
 
               <div id="textMode" class="submit-panel">
-                <textarea
-                  id="textResponse"
-                  rows="5"
-                  placeholder="Write your response here..."
-                ></textarea>
+                <textarea id="textResponse" rows="5" placeholder="Write your response here..."></textarea>
               </div>
 
-              <button id="confirmSubmit" class="confirm-submit" type="button">
-                Confirm Submit
-              </button>
+              <button id="confirmSubmit" class="confirm-submit" type="button">Confirm Submit</button>
             </section>
 
             <section class="content-block">

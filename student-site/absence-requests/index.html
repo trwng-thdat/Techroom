@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Absence Requests | Techroom</title>
+    <meta name="description" content="Submit and manage your absence requests for enrolled classes." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="absence-requests"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="index.html"
+        data-schedule-href="../schedule/index.html"
+        data-profile-href="../profile/index.html"
+        data-settings-href="#"
+      ></div>
+
+      <main class="content">
+        <div
+          id="header-container"
+          data-back-href="../index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
+
+        <div class="absence-page">
+
+          <!-- Left: Form -->
+          <section class="form-section" aria-labelledby="formHeading">
+            <h1 id="formHeading">Request an Absence</h1>
+            <p class="form-sub">Submit at least 24 hours before your scheduled session.</p>
+
+            <form id="absenceForm" novalidate>
+
+              <!-- Class selector -->
+              <div class="field-group" id="classFieldGroup">
+                <label class="field-label" for="classSelect">SELECT A CLASS</label>
+                <div class="select-wrap">
+                  <select id="classSelect" name="class" required aria-required="true">
+                    <option value="">— Select a class —</option>
+                  </select>
+                  <svg class="select-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <span class="field-error" id="classError" role="alert" hidden>Please select a class</span>
+              </div>
+
+              <!-- Date -->
+              <div class="field-group" id="dateFieldGroup">
+                <label class="field-label" for="absenceDate">DATE OF ABSENCE</label>
+                <div class="input-wrap">
+                  <input type="date" id="absenceDate" name="date" required aria-required="true" />
+                  <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+                </div>
+                <span class="field-hint">Only upcoming scheduled session dates are selectable.</span>
+                <span class="field-error" id="dateError" role="alert" hidden>Please select a date</span>
+              </div>
+
+              <!-- Reason -->
+              <div class="field-group" id="reasonFieldGroup">
+                <label class="field-label" for="absenceReason">REASON FOR ABSENCE</label>
+                <div class="textarea-wrap">
+                  <textarea
+                    id="absenceReason"
+                    name="reason"
+                    rows="4"
+                    maxlength="500"
+                    placeholder="Briefly describe the reason for your absence..."
+                    required
+                    aria-required="true"
+                  ></textarea>
+                  <span class="char-count" id="charCount">0 / 500</span>
+                </div>
+                <span class="field-error" id="reasonError" role="alert" hidden>Please enter a reason</span>
+              </div>
+
+              <!-- Supporting document -->
+              <div class="field-group">
+                <label class="field-label" for="absenceDoc">SUPPORTING DOCUMENT</label>
+                <label class="dropzone" for="absenceDoc" id="dropzoneLabel">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="dropzone-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3-3 3 3"/></svg>
+                  <span class="dropzone-primary" id="dropzoneText">Attach file (e.g., medical certificate)</span>
+                  <span class="dropzone-secondary">PDF, JPG up to 5MB</span>
+                </label>
+                <input type="file" id="absenceDoc" name="doc" accept=".pdf,.jpg,.jpeg,.png" aria-label="Supporting document" />
+              </div>
+
+              <!-- Actions -->
+              <div class="form-actions">
+                <button class="btn-submit" id="submitBtn" type="submit">Submit Request</button>
+                <button class="btn-cancel" id="cancelBtn" type="button">Cancel</button>
+              </div>
+
+            </form>
+          </section>
+
+          <!-- Right: Sidebar -->
+          <aside class="absence-sidebar">
+
+            <!-- My Absence Requests -->
+            <article class="sidebar-card requests-card">
+              <div class="sidebar-card-header">
+                <span class="sidebar-card-title">MY ABSENCE REQUESTS</span>
+                <span class="sidebar-card-sub">Recent requests</span>
+              </div>
+              <ul class="requests-list" id="recentRequestsList" role="list"></ul>
+              <a href="#" class="view-all-link" id="viewAllLink">View all requests →</a>
+            </article>
+
+            <!-- Absence Policy -->
+            <article class="sidebar-card policy-card">
+              <div class="policy-header">
+                <span class="policy-title">ABSENCE POLICY</span>
+              </div>
+              <div class="policy-note" id="policyNote"></div>
+              <div class="policy-usage">
+                <span class="policy-usage-label">TERM USAGE</span>
+                <div class="usage-dots" id="usageDots" aria-label="Absence usage"></div>
+              </div>
+            </article>
+
+            <!-- Makeup session tip -->
+            <article class="tip-card">
+              <span class="tip-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+              </span>
+              <div>
+                <strong>Need a makeup session?</strong>
+                <p>Approved absences qualify for 1:1 makeup credits. Contact your tutor after approval to schedule a catch-up.</p>
+              </div>
+            </article>
+
+          </aside>
+        </div>
+
+        <!-- Success toast -->
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

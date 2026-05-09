@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,10 +9,10 @@
   </head>
   <body>
     <div class="app-shell">
-      <div id="sidebar-container" data-active="my-classes" data-home-href="../index.html" data-classes-href="../index.html" data-assignments-href="#" data-absence-href="#" data-schedule-href="#" data-profile-href="#" data-settings-href="#"></div>
+      <div id="sidebar-container" data-active="my-classes" data-home-href="../index.html" data-classes-href="../index.html" data-assignments-href="../assignments/index.html" data-absence-href="../absence-requests/index.html" data-schedule-href="../schedule/index.html" data-profile-href="../profile/index.html" data-settings-href="#"></div>
 
       <main class="content">
-        <div id="header-container" data-back-href="../index.html" data-profile-name="Maya Sterling" data-profile-role="Student" data-avatar="MS" data-avatar-color="#f39b54"></div>
+        <div id="header-container" data-back-href="../index.html" data-profile-href="../profile/index.html" data-profile-name="Maya Sterling" data-profile-role="Student" data-avatar="MS" data-avatar-color="#f39b54"></div>
 
         <section class="class-header" aria-labelledby="class-title">
           <div>
@@ -40,8 +40,8 @@
 
         <nav class="tabs" aria-label="Class sections">
           <button class="tab-link active" data-tab="overview" type="button">Overview</button>
-          <button class="tab-link" data-tab="materials" type="button">Materials</button>
-          <a class="tab-link" href="../assignments/index.html?code=MATH-402-A">Assignments</a>
+          <a class="tab-link" id="materialsTabLink" href="../materials/index.html">Materials</a>
+          <a class="tab-link" id="assignmentsTabLink" href="../assignments/index.html">Assignments</a>
         </nav>
 
         <div class="main-content">
@@ -65,9 +65,7 @@
             </article>
           </section>
 
-          <section class="tab-content" id="materials-tab">
-            <p>Materials content coming soon.</p>
-          </section>
+
 
           <aside class="sidebar-right">
             <article class="instructor-card">
@@ -101,10 +99,10 @@
         var params = new URLSearchParams(location.search);
         var code = params.get("code");
         if (code) {
-          var assignmentsLink = document.querySelector('.tab-link[href*="assignments"]');
-          if (assignmentsLink) {
-            assignmentsLink.href = "../assignments/index.html?code=" + code;
-          }
+          var materialsLink = document.getElementById('materialsTabLink');
+          if (materialsLink) materialsLink.href = "../materials/index.html?code=" + code;
+          var assignmentsLink = document.getElementById('assignmentsTabLink');
+          if (assignmentsLink) assignmentsLink.href = "../assignments/index.html?code=" + code;
         }
       })();
     </script>

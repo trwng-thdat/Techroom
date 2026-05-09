@@ -11,6 +11,8 @@
     const avatar = container.dataset.avatar || "S";
     const avatarColor = container.dataset.avatarColor || "#14b99e";
 
+    const profileHref = container.dataset.profileHref || "../profile/index.html";
+
     container.innerHTML = `
       <header class="workspace-topbar">
         <a class="back-link" href="${backHref}" aria-label="Back to previous section">
@@ -22,13 +24,13 @@
             ${iconMarkup.bell}
           </button>
 
-          <button class="profile-chip" type="button" aria-label="${profileName} profile">
+          <a class="profile-chip" href="${profileHref}" aria-label="${profileName} profile">
             <span class="profile-avatar" style="background:${avatarColor}">${avatar}</span>
             <span>
               <strong>${profileName}</strong>
               <small>${profileRole}</small>
             </span>
-          </button>
+          </a>
         </div>
       </header>
     `;
