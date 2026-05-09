@@ -35,17 +35,17 @@ assignmentList.addEventListener("click", (event) => {
   const submissionsButton = event.target.closest(".submissions-button");
 
   if (deleteButton) {
-    window.alert(`Delete flow for ${deleteButton.dataset.title} will be added next.`);
+    showModal(`Delete flow for ${deleteButton.dataset.title} will be added next.`);
     return;
   }
 
   if (submissionsButton) {
-    window.alert(`Submissions for ${submissionsButton.dataset.title} will be added next.`);
+    showModal(`Submissions for ${submissionsButton.dataset.title} will be added next.`);
   }
 });
 
 createAssignmentButton.addEventListener("click", () => {
-  window.alert("Create assignment flow will be added next.");
+  showModal("Create assignment flow will be added next.");
 });
 
 renderAssignments();

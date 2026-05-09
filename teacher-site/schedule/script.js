@@ -78,7 +78,7 @@ sessionList.addEventListener("click", (event) => {
     return;
   }
 
-  window.alert(`${actionButton.dataset.action} flow will be added next.`);
+  showModal(`${actionButton.dataset.action} flow will be added next.`);
 });
 
 renderSessions();

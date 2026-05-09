@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,18 +17,28 @@
       ></div>
 
       <main class="content">
-        <div id="header-container" data-back-href="../my-classes/index.html"></div>
+        <div
+          id="header-container"
+          data-back-href="../my-classes/index.html"
+        ></div>
 
         <section class="class-header" aria-labelledby="class-title">
           <h1 id="class-title">Advanced Mathematics &mdash; Grade 10</h1>
           <div class="class-meta">
             <span class="code-pill">MATH-10A</span>
             <span>
-              <svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                <path d="M12 10h.01" />
+              </svg>
               Room 301, Science Wing
             </span>
             <span>
-              <svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+                />
+              </svg>
               Tue &amp; Thu, 4:30 PM - 6:00 PM
             </span>
           </div>
@@ -62,26 +72,153 @@
             </svg>
           </div>
           <h2>Upload New Resources</h2>
-          <p>Drag and drop files here or use the buttons to curate your atelier.</p>
+          <p>
+            Drag and drop files here or use the buttons to curate your atelier.
+          </p>
           <div class="upload-actions">
             <button class="primary-action" type="button" id="uploadFile">
-              <svg viewBox="0 0 24 24"><path d="M12 3v12" /><path d="m7 8 5-5 5 5" /><path d="M5 21h14" /></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v12" />
+                <path d="m7 8 5-5 5 5" />
+                <path d="M5 21h14" />
+              </svg>
               Upload File
             </button>
             <button class="secondary-action" type="button" id="addLink">
-              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2" /><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2" /></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2" />
+                <path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2" />
+              </svg>
               Add Link
             </button>
           </div>
         </section>
 
-        <section class="materials-grid" id="materialsList" aria-label="Class materials"></section>
+        <section
+          class="materials-grid"
+          id="materialsList"
+          aria-label="Class materials"
+        ></section>
+
+        <!-- Material Form Modal -->
+        <div
+          id="materialModal"
+          class="modal"
+          role="dialog"
+          aria-labelledby="modalTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-overlay"></div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modalTitle">Edit Material</h2>
+              <button
+                type="button"
+                class="modal-close"
+                aria-label="Close dialog"
+              >
+                <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+              </button>
+            </div>
+            <form id="materialForm" class="material-form">
+              <div class="form-group">
+                <label for="materialTitle">Material Title</label>
+                <input
+                  type="text"
+                  id="materialTitle"
+                  name="title"
+                  required
+                  placeholder="Enter material title"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="materialDescription">Description</label>
+                <textarea
+                  id="materialDescription"
+                  name="description"
+                  rows="3"
+                  placeholder="Describe the material and its purpose"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="materialCategory">Category/Tag</label>
+                <select id="materialCategory" name="category" required>
+                  <option value="">Select a category</option>
+                  <option value="Worksheet">Worksheet</option>
+                  <option value="Reference">Reference</option>
+                  <option value="Exam Material">Exam Material</option>
+                  <option value="Video">Video</option>
+                  <option value="Lecture Notes">Lecture Notes</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="typeGroup">
+                <label>Type</label>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="type" value="pdf" /> PDF Document
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="type" value="doc" /> Document
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="type" value="link" /> External
+                    Link
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group" id="fileGroup" style="display: none">
+                <label for="materialFile">Attached File</label>
+                <div class="file-input-wrapper">
+                  <input
+                    type="file"
+                    id="materialFile"
+                    name="file"
+                    accept=".pdf,.doc,.docx"
+                  />
+                  <span id="fileName"></span>
+                  <button type="button" class="change-file-btn">
+                    Change File
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group" id="linkGroup" style="display: none">
+                <label for="materialLink">Link URL</label>
+                <input
+                  type="url"
+                  id="materialLink"
+                  name="link"
+                  placeholder="https://example.com"
+                />
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="cancel-button" aria-label="Cancel">
+                  Cancel
+                </button>
+                <button type="submit" class="save-button">Save Changes</button>
+              </div>
+            </form>
+
+            <div class="modal-footer" id="deleteFooter" style="display: none">
+              <button type="button" class="delete-material-btn">
+                Delete Material
+              </button>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
 
     <script src="../sidebar.js"></script>
     <script src="../header.js"></script>
     <script src="../data.js"></script>
+    <script src="../modal.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
