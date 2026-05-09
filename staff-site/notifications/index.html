@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="notifications" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search communications..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Communications Hub</p>
+            <h1>Notifications</h1>
+            <p class="page-subtitle">Communicate with students and teachers through coordinated digital dispatches.</p>
+          </div>
+          <a class="primary-button" href="new/index.html">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14" /><path d="M5 12h14" /></svg>
+            Create Notification
+          </a>
+        </section>
+
+        <section class="makeup-queue-card">
+          <header class="queue-card-head">
+            <h2>Sent Dispatches</h2>
+            <div class="mini-actions">
+              <button type="button" data-toast="Filter is demo-only."><svg viewBox="0 0 24 24"><path d="M3 5h18" /><path d="M7 12h10" /><path d="M10 19h4" /></svg>Filter</button>
+              <button type="button" data-toast="Notification export queued."><svg viewBox="0 0 24 24"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>Export</button>
+            </div>
+          </header>
+          <table class="data-table dispatch-table">
+            <thead>
+              <tr><th>Title</th><th>Recipients</th><th>Date Sent</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="dispatchTable"></tbody>
+          </table>
+          <footer class="table-footer">
+            <span id="dispatchCount">Showing 0 notifications</span>
+            <div class="pagination"><button>‹</button><button class="active">1</button><button>2</button><button>3</button><button>›</button></div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

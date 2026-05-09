@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="classes" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search resources..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Management Center</p>
+            <h1>Classes</h1>
+          </div>
+          <div class="staff-toolbar">
+            <label class="staff-search">
+              <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+              <input id="classSearch" type="search" placeholder="Filter by name or teacher..." />
+            </label>
+            <a class="primary-button" href="new/index.html">+ Add Class</a>
+          </div>
+        </section>
+
+        <section class="class-table-card" aria-label="Class list">
+          <table class="data-table">
+            <thead>
+              <tr><th>Class Name</th><th>Course</th><th>Start Date</th><th>Assigned Teacher</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="classTable"></tbody>
+          </table>
+          <footer class="table-footer">
+            <span id="classCount">Showing 1-5 of 24 classes</span>
+            <div class="pagination"><button>‹</button><button class="active">1</button><button>2</button><button>3</button><span>...</span><button>5</button><button>›</button></div>
+          </footer>
+        </section>
+      </main>
+    </div>
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Login | Techroom</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="staff-login-page">
+      <section class="staff-login-card" aria-labelledby="staff-login-title">
+        <a class="staff-brand" href="../index.html">
+          <strong>Techroom</strong>
+          <small>Academic Management</small>
+        </a>
+        <h1 id="staff-login-title">Staff workspace</h1>
+        <p>Manage classes, rosters, rooms, academic alerts, and daily campus operations.</p>
+        <form id="staffLoginForm" novalidate>
+          <div class="field-group">
+            <label for="staffUsername">Username</label>
+            <input id="staffUsername" type="text" autocomplete="username" />
+          </div>
+          <div class="field-group">
+            <label for="staffPassword">Password</label>
+            <input id="staffPassword" type="password" autocomplete="current-password" />
+          </div>
+          <button class="primary-button" type="submit">Open Dashboard</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

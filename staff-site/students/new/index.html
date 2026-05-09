@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Student | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="students" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search students..."></div>
+
+        <section>
+          <p class="eyebrow">Academic Roster</p>
+          <h1>Add Student</h1>
+          <p class="page-subtitle">Create a learner profile, capture guardian contact, and optionally place the student into an active class.</p>
+        </section>
+
+        <section class="form-card">
+          <form class="class-form" id="addStudentForm" novalidate>
+            <div class="field-group">
+              <label for="studentId">Student ID</label>
+              <input id="studentId" type="text" value="ST-2024-1207" />
+            </div>
+            <div class="field-group">
+              <label for="studentName">Full Name</label>
+              <input id="studentName" type="text" placeholder="e.g. Taylor Nguyen" />
+              <p class="error-text" id="studentNameError" hidden>Required field</p>
+            </div>
+            <div class="field-group">
+              <label for="studentGrade">Grade / Cohort</label>
+              <select id="studentGrade">
+                <option>U16</option>
+                <option selected>U17</option>
+                <option>U18</option>
+                <option>Foundation</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="studentStatus">Status</label>
+              <select id="studentStatus">
+                <option selected>Active</option>
+                <option>On Leave</option>
+                <option>Pending</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="studentEmail">Email Address</label>
+              <input id="studentEmail" type="email" placeholder="student@techroom.edu" />
+            </div>
+            <div class="field-group">
+              <label for="studentPhone">Phone Number</label>
+              <input id="studentPhone" type="tel" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div class="field-group">
+              <label for="guardianName">Guardian Name</label>
+              <input id="guardianName" type="text" placeholder="Parent or guardian" />
+            </div>
+            <div class="field-group">
+              <label for="initialClass">Initial Class</label>
+              <select id="initialClass">
+                <option value="">Assign later</option>
+                <option>Advanced Algorithm and Logic</option>
+                <option>Physics & Lab</option>
+                <option>Intro to Literature</option>
+                <option>Python Scripting</option>
+              </select>
+            </div>
+            <footer class="form-actions">
+              <span>Student profiles can be added to class rosters after creation.</span>
+              <div>
+                <a class="secondary-button" href="../index.html">Cancel</a>
+                <button class="primary-button" type="submit">Save Student →</button>
+              </div>
+            </footer>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Class Session | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="timetable" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search resources..."></div>
+
+        <section class="class-page-head">
+          <div>
+            <p class="breadcrumb">Timetable / <strong>Add Class</strong></p>
+            <h1>Add Class Session</h1>
+            <p class="page-subtitle">Configure a new time slot for the academic curriculum.</p>
+          </div>
+          <div class="academic-year">
+            <span>Academic Year</span>
+            <strong>2023/2024 • Term 2</strong>
+          </div>
+        </section>
+
+        <section class="session-layout">
+          <form class="session-form-card" id="sessionForm">
+            <h2><svg viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16" /><path d="M6 5h12a2 2 0 0 1 2 2v12H4V7a2 2 0 0 1 2-2Z" /></svg>Session Details</h2>
+            <div class="field-group">
+              <label for="sessionClass">Select Class</label>
+              <select id="sessionClass"></select>
+            </div>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="sessionDay">Day of Week</label>
+                <select id="sessionDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select>
+              </div>
+              <div class="field-group">
+                <label for="sessionRoom">Room</label>
+                <select id="sessionRoom"></select>
+              </div>
+              <div class="field-group">
+                <label for="startTime">Start Time</label>
+                <input id="startTime" type="time" value="09:00" />
+              </div>
+              <div class="field-group">
+                <label for="endTime">End Time</label>
+                <input id="endTime" type="time" value="10:30" />
+              </div>
+            </div>
+            <label class="repeat-card">
+              <span><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><path d="M7 23l-4-4 4-4" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></svg></span>
+              <span><strong>Repeat Weekly</strong><small>Schedule this session for the entire term.</small></span>
+              <input type="checkbox" checked />
+            </label>
+            <div class="form-submit-row">
+              <button class="primary-button" type="submit">Save Session →</button>
+              <a class="text-danger" href="../index.html">Cancel</a>
+            </div>
+          </form>
+
+          <aside class="session-side">
+            <article class="live-check-card">
+              <div class="panel-head"><h2>Live Check</h2><span class="status-dot-small"></span></div>
+              <div id="liveCheckList"></div>
+            </article>
+            <article class="class-overview-card">
+              <p class="eyebrow">Class Overview</p>
+              <h2 id="overviewClass">Advanced Mathematics II</h2>
+              <p id="overviewMeta">Grade 12 • Science Stream</p>
+              <div class="allocation-row"><span>Weekly Allocation</span><strong id="allocationValue">4 / 6 Hours</strong></div>
+              <div class="bar"><span id="allocationBar" style="width: 67%"></span></div>
+              <small id="allocationNote">2 hours remaining to meet curriculum goals.</small>
+              <div class="overview-stats">
+                <div><span>Students</span><strong id="overviewStudents">28 / 30</strong></div>
+                <div><span>Type</span><strong>Lecture</strong></div>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

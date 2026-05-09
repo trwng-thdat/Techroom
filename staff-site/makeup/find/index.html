@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Makeup Class | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="makeup" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search resources..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="breadcrumb">Makeup Requests › <strong>Find Makeup Class</strong></p>
+            <h1>Find Makeup Class for <span id="makeupStudentName">Student</span></h1>
+          </div>
+        </section>
+
+        <section class="makeup-filter-panel">
+          <div class="field-group">
+            <label for="makeupSubject">Subject</label>
+            <select id="makeupSubject"></select>
+          </div>
+          <div class="field-group">
+            <label for="makeupLevel">Level</label>
+            <select id="makeupLevel"></select>
+          </div>
+          <div class="field-group">
+            <label for="makeupDateRange">Date Range</label>
+            <input id="makeupDateRange" value="Oct 12 - Oct 19, 2023" />
+          </div>
+          <button class="primary-button filter-session-button" type="button" id="filterSessionsButton">
+            <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+            Filter Available Sessions
+          </button>
+        </section>
+
+        <section class="class-table-card">
+          <table class="data-table makeup-table">
+            <thead>
+              <tr><th>Class Code</th><th>Topic</th><th>Date/Time</th><th>Room</th><th>Seats</th><th>Action</th></tr>
+            </thead>
+            <tbody id="makeupSessionTable"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers | Staff</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="teachers" data-depth=".."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search teacher..."></div>
+        <section class="class-page-head">
+          <div>
+            <p class="eyebrow">Academic Staff Management</p>
+            <h1>Teachers</h1>
+            <p class="page-subtitle">Add, update, and remove faculty profiles from the academic directory.</p>
+          </div>
+          <div class="staff-toolbar compact-toolbar">
+            <select class="filter-select" id="teacherDepartment">
+              <option value="">All Departments</option>
+              <option>Mathematics</option>
+              <option>Physics</option>
+              <option>Science</option>
+              <option>English</option>
+              <option>Computer Science</option>
+              <option>Design</option>
+            </select>
+            <button class="primary-button" type="button" id="addTeacherButton">+ Add Teacher</button>
+          </div>
+        </section>
+
+        <section class="teacher-grid" id="teacherGrid" aria-label="Teacher directory"></section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="teacherModal" hidden>
+      <section class="staff-modal management-modal" role="dialog" aria-modal="true" aria-labelledby="teacherModalTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow">Faculty Profile</p>
+            <h2 id="teacherModalTitle">Add Teacher</h2>
+            <p>Maintain teacher contact, department, and workload information.</p>
+          </div>
+          <button class="modal-close" type="button" id="closeTeacherModal" aria-label="Close teacher form">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+        <form class="staff-modal-body modal-form-grid" id="teacherForm">
+          <input id="teacherEditId" type="hidden" />
+          <div class="field-group">
+            <label for="teacherName">Full Name</label>
+            <input id="teacherName" required placeholder="Prof. Henderson" />
+          </div>
+          <div class="field-group">
+            <label for="teacherSubject">Subject</label>
+            <input id="teacherSubject" required placeholder="Digital Illustration" />
+          </div>
+          <div class="field-group">
+            <label for="teacherDepartmentInput">Department</label>
+            <input id="teacherDepartmentInput" required placeholder="Design" />
+          </div>
+          <div class="field-group">
+            <label for="teacherStatus">Status</label>
+            <select id="teacherStatus"><option>Active</option><option>Available</option><option>Busy</option><option>On Leave</option></select>
+          </div>
+          <div class="field-group">
+            <label for="teacherEmail">Email</label>
+            <input id="teacherEmail" type="email" required placeholder="teacher@techroom.edu" />
+          </div>
+          <div class="field-group">
+            <label for="teacherPhone">Phone</label>
+            <input id="teacherPhone" placeholder="+1 (555) 000-0000" />
+          </div>
+          <div class="field-group modal-span">
+            <label for="teacherLoad">Current Load</label>
+            <input id="teacherLoad" type="number" min="0" max="12" value="3" />
+          </div>
+        </form>
+        <footer class="staff-modal-actions">
+          <button class="secondary-button" type="button" id="cancelTeacherModal">Cancel</button>
+          <div>
+            <button class="secondary-button danger-action" type="button" id="deleteTeacherButton" hidden>Delete</button>
+            <button class="primary-button" type="submit" form="teacherForm">Save Teacher</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

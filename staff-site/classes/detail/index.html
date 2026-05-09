@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Detail | Staff</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="staff-app">
+      <div id="staff-sidebar" data-active="classes" data-depth="../.."></div>
+      <main class="staff-content">
+        <div id="staff-header" data-search="Search portal..."></div>
+
+        <section>
+          <p class="eyebrow" id="classCode">Advanced Computing • U21</p>
+          <div class="class-page-head">
+            <div>
+              <h1 id="classTitle">Advanced Algorithms & Logic</h1>
+              <div class="class-detail-meta">
+                <span class="avatar-pair"><span>JV</span><span>SC</span></span>
+                <span id="teacherCount">2 Teachers Assigned</span>
+                <span>•</span>
+                <span id="studentCount">42 Enrolled Students</span>
+              </div>
+            </div>
+            <button class="primary-button" type="button" id="openAddStudent">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /><path d="M19 8v6" /><path d="M22 11h-6" /></svg>
+              Add Student
+            </button>
+          </div>
+        </section>
+
+        <nav class="detail-tabs" aria-label="Class detail tabs">
+          <button type="button" data-toast="Overview tab is demo-only.">Overview</button>
+          <button class="active" type="button">Participants <span class="status-pill">3</span></button>
+          <button type="button" data-toast="Schedule tab is demo-only.">Schedule</button>
+          <button type="button" data-toast="Materials tab is demo-only.">Materials</button>
+        </nav>
+
+        <section class="detail-layout">
+          <aside>
+            <div class="panel-head">
+              <h2>Assigned Teachers</h2>
+              <button class="secondary-button" type="button" data-toast="Teacher assignment is demo-only.">+ Add Teacher</button>
+            </div>
+            <div class="teacher-list" id="teacherList"></div>
+          </aside>
+
+          <section>
+            <div class="student-controls">
+              <h2>Enrolled Students</h2>
+              <label class="staff-search">
+                <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+                <input id="studentSearch" type="search" placeholder="Filter by name or ID..." />
+              </label>
+            </div>
+            <div class="student-table-card">
+              <table class="data-table">
+                <thead><tr><th></th><th>Student ID</th><th>Name</th><th>Enroll Date</th><th>Status</th></tr></thead>
+                <tbody id="studentTable"></tbody>
+              </table>
+            </div>
+            <footer class="table-footer">
+              <span>Page 1 of 5</span>
+              <div class="pagination"><button>‹</button><button>›</button></div>
+            </footer>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div class="staff-modal-backdrop" id="addStudentModal" hidden>
+      <section class="staff-modal" role="dialog" aria-modal="true" aria-labelledby="addStudentTitle">
+        <header class="staff-modal-head">
+          <div>
+            <p class="eyebrow">Class Enrollment</p>
+            <h2 id="addStudentTitle">Add Student to Class</h2>
+            <p>Select one or more students to enroll in this class roster.</p>
+          </div>
+          <button class="modal-close" type="button" id="closeAddStudent" aria-label="Close add student dialog">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+        </header>
+
+        <div class="staff-modal-body">
+          <label class="staff-search modal-search">
+            <svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3" /><path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" /></svg>
+            <input id="availableStudentSearch" type="search" placeholder="Search by student name, ID, or grade..." />
+          </label>
+          <div class="available-student-list" id="availableStudentList"></div>
+        </div>
+
+        <footer class="staff-modal-actions">
+          <span id="selectedStudentCount">0 students selected</span>
+          <div>
+            <button class="secondary-button" type="button" id="cancelAddStudent">Cancel</button>
+            <button class="primary-button" type="button" id="confirmAddStudent">Add Selected Students</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <script src="../../data.js"></script>
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
