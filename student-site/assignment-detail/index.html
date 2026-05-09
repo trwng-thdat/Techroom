@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Detail | Student</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="assignments"
+        data-home-href="../index.html"
+        data-classes-href="../index.html"
+        data-assignments-href="../assignments/index.html"
+        data-absence-href="#"
+        data-schedule-href="#"
+        data-profile-href="#"
+        data-settings-href="#"
+      ></div>
+
+      <main class="content">
+        <div
+          id="header-container"
+          data-back-href="../assignments/index.html"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
+
+        <section class="assignment-shell">
+          <div class="assignment-main">
+            <p class="breadcrumbs" id="breadcrumbs">My Classes > Assignment</p>
+
+            <h1 id="assignmentTitle">Assignment</h1>
+
+            <div class="assignment-lead">
+              <span class="avatar">ER</span>
+              <div>
+                <p id="assignmentInstructor">Instructor</p>
+                <small id="assignmentPostedAt">Posted</small>
+              </div>
+            </div>
+
+            <div class="deadline-banner" id="deadlineBanner">
+              <strong id="deadlineText">Deadline</strong>
+              <span id="remainingText">Remaining time</span>
+            </div>
+
+            <section class="content-block">
+              <h2>Instructions</h2>
+              <p id="assignmentInstructions"></p>
+            </section>
+
+            <section class="content-block">
+              <h2>Reference Files</h2>
+              <div id="referenceFileList" class="resource-list"></div>
+            </section>
+
+            <section class="submit-card">
+              <div class="submit-tabs">
+                <button
+                  class="submit-tab active"
+                  data-mode="upload"
+                  type="button"
+                >
+                  Upload File
+                </button>
+                <button class="submit-tab" data-mode="text" type="button">
+                  Text Response
+                </button>
+              </div>
+
+              <div id="uploadMode" class="submit-panel active">
+                <label class="upload-dropzone" for="submissionFileInput">
+                  <span class="upload-icon">⇪</span>
+                  <strong>Click to upload or drag and drop</strong>
+                  <small>PDF, DOCX, XLSX, JPG up to 25MB</small>
+                </label>
+                <input
+                  id="submissionFileInput"
+                  type="file"
+                  multiple
+                  accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png"
+                />
+                <div id="selectedFiles" class="selected-files"></div>
+              </div>
+
+              <div id="textMode" class="submit-panel">
+                <textarea
+                  id="textResponse"
+                  rows="5"
+                  placeholder="Write your response here..."
+                ></textarea>
+              </div>
+
+              <button id="confirmSubmit" class="confirm-submit" type="button">
+                Confirm Submit
+              </button>
+            </section>
+
+            <section class="content-block">
+              <h2>Submission History</h2>
+              <div id="submissionHistory" class="history-list"></div>
+            </section>
+          </div>
+
+          <aside class="assignment-side">
+            <article class="side-card status-card">
+              <h3 id="statusLabel">Not Submitted</h3>
+              <p id="statusTimer">No active timer</p>
+              <ul id="statusChecklist"></ul>
+            </article>
+
+            <article class="side-card">
+              <h3>Course Context</h3>
+              <dl>
+                <div>
+                  <dt>Course</dt>
+                  <dd id="courseName"></dd>
+                </div>
+                <div>
+                  <dt>Teacher</dt>
+                  <dd id="courseTeacher"></dd>
+                </div>
+                <div>
+                  <dt>Next session</dt>
+                  <dd id="nextSession"></dd>
+                </div>
+              </dl>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

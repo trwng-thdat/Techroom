@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Details | Student</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="sidebar-container" data-active="my-classes" data-home-href="../index.html" data-classes-href="../index.html" data-assignments-href="#" data-absence-href="#" data-schedule-href="#" data-profile-href="#" data-settings-href="#"></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../index.html" data-profile-name="Maya Sterling" data-profile-role="Student" data-avatar="MS" data-avatar-color="#f39b54"></div>
+
+        <section class="class-header" aria-labelledby="class-title">
+          <div>
+            <div class="class-header-meta">
+              <span class="class-code" id="classCode">MATH-402-A</span>
+              <span class="class-level" id="classLevel">Advanced</span>
+            </div>
+            <h1 id="class-title">Advanced Calculus III</h1>
+            <div class="class-info-row">
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+                <span id="classSchedule">Tue & Thu · 4:30 - 6:00 PM</span>
+              </span>
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+                <span id="classLocation">Room 301, Science Building A</span>
+              </span>
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82Z" /><path d="M7 7h.01" /></svg>
+                <span id="classCredits">3 Credits</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <nav class="tabs" aria-label="Class sections">
+          <button class="tab-link active" data-tab="overview" type="button">Overview</button>
+          <button class="tab-link" data-tab="materials" type="button">Materials</button>
+          <a class="tab-link" href="../assignments/index.html?code=MATH-402-A">Assignments</a>
+        </nav>
+
+        <div class="main-content">
+          <section class="tab-content active" id="overview-tab">
+            <article class="description-section">
+              <h2>Class Description & Objectives</h2>
+              <p id="classDescription">This advanced curriculum is designed for students who demonstrate aptitude to learn rigorous reasoning and the foundations of proofs, and other mathematics.</p>
+
+              <div class="learning-objectives">
+                <h3>Learning Objectives</h3>
+                <ul id="objectivesList"></ul>
+              </div>
+            </article>
+
+            <article class="curriculum-section">
+              <div class="section-header">
+                <h2>Curriculum Outline</h2>
+                <a href="#" class="view-all-link">View all sessions ›</a>
+              </div>
+              <div id="curriculumList"></div>
+            </article>
+          </section>
+
+          <section class="tab-content" id="materials-tab">
+            <p>Materials content coming soon.</p>
+          </section>
+
+          <aside class="sidebar-right">
+            <article class="instructor-card">
+              <div class="card-head">
+                <span class="instructor-avatar" id="teacherAvatar" style="background: #f39b54">JR</span>
+                <div>
+                  <h3 id="teacherName">Dr. Julian Rivers</h3>
+                  <p id="teacherRole">Lead Instructor</p>
+                </div>
+              </div>
+
+              <div class="instructor-notes" id="instructorNotes"></div>
+
+              <button class="secondary-button full-width" type="button">Message Instructor</button>
+            </article>
+
+            <article class="sessions-card">
+              <div class="card-head">
+                <h3>Upcoming Sessions</h3>
+              </div>
+              <div id="sessionsList"></div>
+              <button class="secondary-button full-width" type="button">View Full Schedule</button>
+            </article>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var code = params.get("code");
+        if (code) {
+          var assignmentsLink = document.querySelector('.tab-link[href*="assignments"]');
+          if (assignmentsLink) {
+            assignmentsLink.href = "../assignments/index.html?code=" + code;
+          }
+        }
+      })();
+    </script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

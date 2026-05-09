@@ -1,83 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atelier Tutoring | Student Login</title>
+    <title>Techroom | My Classes</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="login-page">
-      <section class="portal-shell" aria-labelledby="login-title">
-        <a class="brand" href="#" aria-label="Atelier Tutoring home">
-          <span class="brand-mark">A</span>
-          <span>Atelier Tutoring</span>
-        </a>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-classes"
+        data-home-href="index.html"
+        data-classes-href="index.html"
+        data-assignments-href="#"
+        data-absence-href="#"
+        data-schedule-href="#"
+        data-profile-href="#"
+        data-settings-href="#"
+      ></div>
 
-        <div class="intro">
-          <p class="eyebrow">STUDENT PORTAL</p>
-          <h1 id="login-title">Welcome back to the <span>Atelier.</span></h1>
-          <p>
-            Access your learning workspace, upcoming sessions, and study
-            resources with precision.
-          </p>
-        </div>
+      <main class="content" id="page-top">
+        <div
+          id="header-container"
+          data-back-href="#page-top"
+          data-profile-name="Maya Sterling"
+          data-profile-role="Student"
+          data-avatar="MS"
+          data-avatar-color="#f39b54"
+        ></div>
 
-        <form class="login-card" id="studentLoginForm" novalidate>
-          <div class="field-group">
-            <label for="studentUsername">Username</label>
-            <input
-              id="studentUsername"
-              name="username"
-              type="text"
-              value=""
-              autocomplete="username"
-            />
+        <section class="page-heading" aria-labelledby="my-classes-title">
+          <div>
+            <h1 id="my-classes-title">My Classes</h1>
           </div>
+        </section>
 
-          <div class="field-group">
-            <div class="label-row">
-              <label for="studentPassword">Password</label>
-              <button class="link-button" type="button" id="forgotPassword">
-                Forgot?
-              </button>
-            </div>
+        <form class="filters-panel" id="classFilters" novalidate>
+          <label class="search-box" for="classSearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.3-4.3" />
+              <path d="M10.8 18a7.2 7.2 0 1 0 0-14.4 7.2 7.2 0 0 0 0 14.4Z" />
+            </svg>
             <input
-              id="studentPassword"
-              name="password"
-              type="password"
-               value=""
-              autocomplete="current-password"
+              id="classSearch"
+              type="search"
+              placeholder="Search your classes..."
+              autocomplete="off"
             />
-          </div>
+          </label>
 
-          <button class="primary-button" type="submit">Sign In to Workspace</button>
+          <div class="filter-selects" aria-label="Class filters">
+            <label class="select-field" for="subjectFilter">
+              <span>Subject</span>
+              <select id="subjectFilter"></select>
+            </label>
 
-          <div class="divider" aria-hidden="true">
-            <span></span>
-            <p>OR CONTINUE WITH</p>
-            <span></span>
+            <label class="select-field" for="levelFilter">
+              <span>Level</span>
+              <select id="levelFilter"></select>
+            </label>
+
+            <label class="select-field" for="dayFilter">
+              <span>Day</span>
+              <select id="dayFilter"></select>
+            </label>
           </div>
         </form>
 
-        <p class="signup-note">
-          Don't have an account?
-          <button class="text-action" type="button" id="applyAccess">
-            Apply for an Atelier space.
+        <section
+          class="class-grid"
+          id="classGrid"
+          aria-label="Enrolled classes"
+        ></section>
+
+        <section class="empty-state" id="emptyState" hidden>
+          <div class="empty-illustration" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 17l5.5-5.5 4 4L19 9" />
+              <path d="M14 9h5v5" />
+              <path d="M5 20h14" />
+              <path d="M9.5 8.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+            </svg>
+          </div>
+          <h2>No classes found</h2>
+          <p>
+            We couldn't find any classes matching your current filters. Try
+            adjusting them to see more results.
+          </p>
+          <button class="secondary-button" type="button" id="clearFilters">
+            Clear filters
           </button>
-        </p>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 DIGITAL ATELIER. ALL RIGHTS RESERVED.</p>
-      <nav aria-label="Footer links">
-        <a href="#">PRIVACY POLICY</a>
-        <a href="#">TERMS OF SERVICE</a>
-        <a href="#">HELP CENTER</a>
-      </nav>
-    </footer>
-
+    <script src="sidebar.js"></script>
+    <script src="header.js"></script>
+    <script src="data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

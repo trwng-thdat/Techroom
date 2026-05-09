@@ -1,0 +1,393 @@
+:root {
+  --ink: #202623;
+  --muted: #63706c;
+  --line: #dfe8e5;
+  --teal: #007a66;
+  --teal-soft: #d9f4ee;
+  --page: #f4f9f7;
+  --card: #ffffff;
+  --warn-bg: #f2e7cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--ink);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+#sidebar-container {
+  min-height: 100vh;
+}
+
+.assignment-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.assignment-main {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.breadcrumbs {
+  margin: 0;
+  color: #7a8784;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+#assignmentTitle {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.assignment-lead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.assignment-lead .avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: #e8d2bb;
+  color: #4e2d16;
+  font-weight: 700;
+}
+
+.assignment-lead p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.assignment-lead small {
+  color: #74817d;
+  font-size: 11px;
+}
+
+.deadline-banner {
+  border-left: 4px solid var(--teal);
+  background: var(--warn-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 2px;
+}
+
+.deadline-banner strong {
+  font-size: 13px;
+}
+
+.deadline-banner span {
+  font-size: 12px;
+  color: #6b5840;
+}
+
+.content-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.content-block h2 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a6b63;
+}
+
+.content-block p {
+  margin: 0;
+  color: #37423f;
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.resource-list,
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resource-item,
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.resource-item strong,
+.history-item strong {
+  display: block;
+  font-size: 13px;
+}
+
+.resource-item small,
+.history-item p {
+  color: #6f7b77;
+  font-size: 12px;
+}
+
+.history-item {
+  display: block;
+}
+
+.history-item ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: #4f5a57;
+  font-size: 12px;
+}
+
+.resource-action {
+  border: 0;
+  background: transparent;
+  color: var(--teal);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.submit-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.submit-tab {
+  border: 0;
+  background: transparent;
+  color: #6d7a76;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 2px;
+}
+
+.submit-tab.active {
+  color: var(--teal);
+}
+
+.submit-panel {
+  display: none;
+}
+
+.submit-panel.active {
+  display: block;
+}
+
+.upload-dropzone {
+  border: 1px dashed #9cc8be;
+  border-radius: 10px;
+  min-height: 150px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #5b6a66;
+}
+
+.upload-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-grid;
+  place-items: center;
+  margin: 0 auto;
+  background: #e8f6f2;
+  color: var(--teal);
+}
+
+#submissionFileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.selected-files {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.selected-file-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-file-item strong {
+  font-size: 12px;
+}
+
+.selected-file-item small {
+  display: block;
+  color: #6f7d78;
+  font-size: 11px;
+}
+
+.remove-file {
+  border: 0;
+  background: #f2f5f4;
+  color: #46514e;
+  border-radius: 6px;
+  height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+#textResponse {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+  padding: 10px;
+  font: inherit;
+}
+
+.confirm-submit {
+  margin-top: 12px;
+  width: 100%;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--teal);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.assignment-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.side-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 14px;
+}
+
+.side-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.status-card p {
+  margin: 0 0 10px;
+  color: #66736f;
+}
+
+.status-card ul {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 6px;
+  color: #4d5955;
+  font-size: 12px;
+}
+
+.side-card dl {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.side-card dt {
+  color: #75827e;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.side-card dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.empty {
+  margin: 0;
+  color: #74817d;
+  font-size: 12px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: rgba(20, 29, 27, 0.95);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  z-index: 30;
+}
+
+@media (max-width: 1080px) {
+  .assignment-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  #sidebar-container {
+    min-height: auto;
+  }
+
+  .assignment-shell {
+    padding: 14px;
+  }
+
+  #assignmentTitle {
+    font-size: 28px;
+  }
+}

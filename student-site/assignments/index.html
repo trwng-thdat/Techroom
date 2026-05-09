@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignments | Student</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="sidebar-container" data-active="assignments" data-home-href="../index.html" data-classes-href="../index.html" data-assignments-href="index.html" data-absence-href="#" data-schedule-href="#" data-profile-href="#" data-settings-href="#"></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../class-detail/index.html" data-profile-name="Maya Sterling" data-profile-role="Student" data-avatar="MS" data-avatar-color="#f39b54"></div>
+
+        <section class="class-header" aria-labelledby="class-title">
+          <div>
+            <div class="class-header-meta">
+              <span class="class-code" id="classCode">MATH-402-A</span>
+              <span class="class-level" id="classLevel">Advanced</span>
+            </div>
+            <h1 id="class-title">Advanced Calculus III</h1>
+            <div class="class-info-row">
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" /></svg>
+                <span id="classSchedule">Tue & Thu · 4:30 - 6:00 PM</span>
+              </span>
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><path d="M12 10h.01" /></svg>
+                <span id="classLocation">Room 301, Science Building A</span>
+              </span>
+              <span class="info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82Z" /><path d="M7 7h.01" /></svg>
+                <span id="classCredits">3 Credits</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <div class="main-content">
+          <section class="tab-content active">
+            <div class="assignments-toolbar">
+              <div class="assignment-filters" role="tablist" aria-label="Assignment filters">
+                <button class="filter-chip active" type="button" data-filter="all">All</button>
+                <button class="filter-chip" type="button" data-filter="not-submitted">Not Submitted</button>
+                <button class="filter-chip" type="button" data-filter="submitted">Submitted</button>
+                <button class="filter-chip" type="button" data-filter="graded">Graded</button>
+              </div>
+              <label class="sort-control">
+                <span>Sort by:</span>
+                <select id="assignmentSort">
+                  <option value="deadline-asc">Deadline: soonest first</option>
+                  <option value="deadline-desc">Deadline: latest first</option>
+                </select>
+              </label>
+            </div>
+            <div id="assignmentList" class="assignment-list"></div>
+            <p id="assignmentEmptyState" class="assignment-empty" hidden>No assignments posted yet.</p>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var code = params.get("code");
+        if (code) {
+          document.getElementById("header-container").dataset.backHref = "../class-detail/index.html?code=" + code;
+        }
+      })();
+    </script>
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
