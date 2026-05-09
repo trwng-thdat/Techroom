@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Course | Admin Portal</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="owner-sidebar" data-active="courses" data-depth="../.."></div>
+      <main class="content">
+        <div id="owner-header"></div>
+        <section class="page-heading course-builder-heading" aria-labelledby="new-course-title">
+          <div>
+            <p class="eyebrow">Courses &gt; Create New Course</p>
+            <h1 id="new-course-title">The Atelier Workshop</h1>
+            <p>Design a curated learning journey. Define core competencies and structured progression for your students.</p>
+          </div>
+          <div class="top-actions">
+            <a class="secondary-button action-link" href="../index.html">Cancel</a>
+            <button class="primary-button" type="submit" form="courseForm">Save Course</button>
+          </div>
+        </section>
+
+        <form class="course-builder" id="courseForm">
+          <section class="admin-form builder-main">
+            <h2 class="section-title">Basic Information</h2>
+            <div class="field-group">
+              <label for="courseName">Course Name</label>
+              <input id="courseName" type="text" placeholder="e.g. Advanced Calculus & Analytic Geometry" />
+            </div>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="subject">Subject</label>
+                <select id="subject"><option>Mathematics</option><option>Science</option><option>English</option><option>Computer Science</option></select>
+              </div>
+              <div class="field-group">
+                <label for="level">Learning Level</label>
+                <select id="level"><option>Beginner (Foundational)</option><option>Intermediate</option><option>University Prep</option></select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="syllabusUpload">Syllabus</label>
+              <label class="upload-box" for="syllabusUpload">
+                <span class="upload-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m17 8-5-5-5 5" /><path d="M12 3v12" /></svg>
+                </span>
+                <span>
+                  <strong id="syllabusFileName">Upload syllabus file</strong>
+                  <small>PDF, DOCX, or PPTX up to 25 MB</small>
+                </span>
+                <span class="secondary-button">Choose File</span>
+              </label>
+              <input class="file-input" id="syllabusUpload" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx" />
+            </div>
+          </section>
+
+          <aside class="metric-panel">
+            <h2><svg viewBox="0 0 24 24"><path d="M4 19V5" /><path d="M8 17v-6" /><path d="M13 17V7" /><path d="M18 17v-4" /><path d="M3 19h18" /></svg>Course Metrics</h2>
+            <div class="session-stepper"><span><small>Sessions</small><strong id="sessionCount">12</strong></span><button type="button" id="addSession">+</button><button type="button" id="removeSession">-</button></div>
+            <label class="switch-row">Publish Status <input type="checkbox" checked /><span></span></label>
+          </aside>
+
+          <section class="admin-form">
+            <h2><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z" /><path d="M14 2v6h6" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>Scope & Objectives</h2>
+            <div class="field-group">
+              <label for="narrative">Course Narrative</label>
+              <textarea id="narrative" placeholder="Describe the journey and outcomes for students..."></textarea>
+            </div>
+            <div class="milestone-list">
+              <div class="milestone"><strong>01</strong><span>Mastery of linear algebra fundamentals</span><button type="button" aria-label="Remove milestone">x</button></div>
+              <div class="milestone"><strong>02</strong><span>Application of calculus in physical systems</span><button type="button" aria-label="Remove milestone">x</button></div>
+            </div>
+          </section>
+
+          <section class="admin-form prerequisites">
+            <h2><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1 1" /><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1-1" /></svg>Prerequisites</h2>
+            <p>Select courses that students must successfully complete before unlocking this atelier workshop.</p>
+            <label class="check-card"><input type="checkbox" checked />Introduction to Logic<small>MATH-101 - Foundational</small></label>
+            <label class="check-card"><input type="checkbox" />Scientific Inquiry<small>SCI-202 - Intermediate</small></label>
+            <label class="check-card"><input type="checkbox" />Data Structures<small>CS-301 - Intermediate</small></label>
+          </section>
+
+          <section class="maturity-card">
+            <div><h2>Course Design Maturity</h2><span class="pill neutral">Draft Status</span></div>
+            <div class="bar"><span style="width: 75%"></span></div>
+          </section>
+        </form>
+      </main>
+    </div>
+
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

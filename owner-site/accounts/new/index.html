@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | Admin Portal</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div id="owner-sidebar" data-active="accounts" data-depth="../.."></div>
+      <main class="content">
+        <div id="owner-header"></div>
+        <section class="page-heading" aria-labelledby="new-account-title">
+          <div>
+            <p class="eyebrow">Account Management &gt; New Account</p>
+            <h1 id="new-account-title">Create New Account</h1>
+            <p>Set up a new access profile for your educational atelier.</p>
+          </div>
+        </section>
+
+        <div class="form-layout">
+          <form class="admin-form" id="newAccountForm" novalidate>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="userId">User ID</label>
+                <input id="userId" type="text" value="ID-2024-0892" />
+              </div>
+              <div class="field-group">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" type="text" placeholder="e.g. John Smith" />
+              </div>
+              <div class="field-group">
+                <label for="emailAddress">Email Address</label>
+                <input id="emailAddress" type="email" value="admin@digitalatelier.com" />
+                <p class="error-text">Email already exists</p>
+              </div>
+              <div class="field-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" type="tel" placeholder="+1 (555) 000-0000" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="accessRole">Access Role</label>
+              <select id="accessRole">
+                <option value="">Select a role...</option>
+                <option>Teacher</option>
+                <option>Staff</option>
+                <option>Student</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <a class="back-text" href="../index.html">Cancel</a>
+              <button class="primary-button" type="submit">Create Account</button>
+            </div>
+          </form>
+
+          <aside class="side-stack">
+            <article class="note-card">
+              <h2><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>Security Note</h2>
+              <p>New users will receive an automated invitation email to set their private password. Links expire in 24 hours.</p>
+            </article>
+            <article class="support-card">
+              <h2>Need Help?</h2>
+              <button type="button" data-toast="Role permissions guide opened."><svg viewBox="0 0 24 24"><path d="M12 17h.01" /><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.2-1.9 1.7-2.5 2.7" /><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" /></svg>Role permissions guide</button>
+              <button type="button" data-toast="Support contact is demo-only."><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" /><path d="m22 6-10 7L2 6" /></svg>Contact System Support</button>
+            </article>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../sidebar.js"></script>
+    <script src="../../header.js"></script>
+    <script src="../../shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

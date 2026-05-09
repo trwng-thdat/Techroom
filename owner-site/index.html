@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login | Techroom</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <section class="login-shell" aria-labelledby="owner-login-title">
+        <a class="brand" href="../index.html" aria-label="Techroom home">
+          <span class="brand-mark">O</span>
+          <span>Admin Portal</span>
+        </a>
+        <h1 id="owner-login-title">Run the center with one clear view.</h1>
+        <p>
+          Review accounts, course health, teacher capacity, and pending admin
+          actions across every Atelier campus.
+        </p>
+        <form id="ownerLoginForm" novalidate>
+          <div class="field-group">
+            <label for="ownerUsername">Username</label>
+            <input id="ownerUsername" name="username" type="text" autocomplete="username" />
+          </div>
+          <div class="field-group">
+            <label for="ownerPassword">Password</label>
+            <input id="ownerPassword" name="password" type="password" autocomplete="current-password" />
+          </div>
+          <button class="primary-button" type="submit">Open Owner Dashboard</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
