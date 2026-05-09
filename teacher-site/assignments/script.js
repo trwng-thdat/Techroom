@@ -40,7 +40,8 @@ assignmentList.addEventListener("click", (event) => {
   }
 
   if (submissionsButton) {
-    showModal(`Submissions for ${submissionsButton.dataset.title} will be added next.`);
+    const title = encodeURIComponent(submissionsButton.dataset.title);
+    window.location.href = `../submissions/index.html?assignment=${title}`;
   }
 });
 
