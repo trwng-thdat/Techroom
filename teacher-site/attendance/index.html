@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Attendance | Teacher</title>
+    <meta name="description" content="Mark student attendance for the current class session." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../schedule/index.html"></div>
+
+        <!-- Session hero -->
+        <section class="session-hero" aria-labelledby="sessionTitle">
+          <div class="hero-top">
+            <div class="hero-left">
+              <p class="session-label">CURRENT SESSION</p>
+              <h1 id="sessionTitle">Advanced Mathematics &mdash; Grade 10</h1>
+              <div class="session-meta">
+                <span class="meta-chip">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg>
+                  Room 301
+                </span>
+                <span class="meta-chip">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <span id="sessionDate">Thursday, Oct 26, 2023</span>
+                </span>
+              </div>
+            </div>
+            <div class="completion-widget" aria-label="Class completion">
+              <span class="completion-label">CLASS COMPLETION</span>
+              <div class="completion-bar-wrap">
+                <div class="completion-bar" id="completionBar"></div>
+              </div>
+              <span class="completion-pct" id="completionPct">0%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Attendance table -->
+        <section class="attendance-card" aria-label="Attendance roster">
+          <div class="att-table-head" role="row">
+            <span role="columnheader">STUDENT INFORMATION</span>
+            <span role="columnheader">PRESENT</span>
+            <span role="columnheader">ABSENT</span>
+            <span role="columnheader">LATE</span>
+          </div>
+
+          <div id="rosterList" role="list"></div>
+
+          <!-- Session notes -->
+          <div class="notes-section">
+            <label class="notes-label" for="sessionNotes">SESSION NOTES (OPTIONAL)</label>
+            <textarea
+              id="sessionNotes"
+              class="notes-input"
+              rows="4"
+              placeholder="Add any specific observations for today's session…"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Submit bar -->
+        <div class="submit-bar">
+          <div class="submit-summary" id="submitSummary">
+            <!-- filled by JS -->
+          </div>
+          <button class="btn-submit" id="submitBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
+            Save Attendance
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

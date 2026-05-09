@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Submissions | Teacher</title>
+    <meta name="description" content="Review and grade student submissions for a class assignment." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div
+        id="sidebar-container"
+        data-active="my-class"
+        data-home-href="../index.html"
+        data-my-class-href="../my-classes/index.html"
+        data-schedule-href="../timetable/index.html"
+      ></div>
+
+      <main class="content">
+        <div id="header-container" data-back-href="../assignments/index.html"></div>
+
+        <!-- Assignment Header -->
+        <section class="assignment-hero" aria-labelledby="assignment-title">
+          <div class="hero-left">
+            <p class="breadcrumb" id="assignmentBreadcrumb">Advanced Mathematics &mdash; Grade 10</p>
+            <h1 id="assignment-title">Quadratic Equations Practice</h1>
+            <div class="posted-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span id="assignmentPosted">Posted Oct 12, 2023</span>
+            </div>
+          </div>
+          <div class="deadline-card" id="deadlineCard">
+            <span class="deadline-label">SUBMISSION DEADLINE</span>
+            <span class="deadline-value" id="assignmentDeadline">Oct 24, 2023 · 11:59 PM</span>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-row" aria-label="Submission statistics">
+          <div class="stat-card">
+            <span class="stat-label">TURNED IN</span>
+            <div class="stat-value" id="statTurnedIn">—</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">GRADED</span>
+            <div class="stat-value" id="statGraded">—</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">AVERAGE SCORE</span>
+            <div class="stat-value accent" id="statAvgScore">—</div>
+          </div>
+        </section>
+
+        <!-- Submission List -->
+        <section class="submissions-section" aria-labelledby="subListHeading">
+          <div class="submissions-toolbar">
+            <h2 id="subListHeading">Student Submissions</h2>
+            <div class="toolbar-right">
+              <!-- Filter tabs -->
+              <div class="filter-tabs" role="tablist" aria-label="Filter submissions">
+                <button class="filter-tab active" role="tab" aria-selected="true" data-filter="all" id="filterAll">All</button>
+                <button class="filter-tab" role="tab" aria-selected="false" data-filter="ungraded" id="filterUngraded">Ungraded</button>
+                <button class="filter-tab" role="tab" aria-selected="false" data-filter="graded" id="filterGraded">Graded</button>
+                <button class="filter-tab" role="tab" aria-selected="false" data-filter="late" id="filterLate">Late</button>
+              </div>
+              <!-- Sort -->
+              <div class="sort-wrapper">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+                <label for="sortSelect" class="sr-only">Sort submissions</label>
+                <select id="sortSelect">
+                  <option value="date-desc">Sort by Date ↓</option>
+                  <option value="date-asc">Sort by Date ↑</option>
+                  <option value="name-asc">Name A–Z</option>
+                  <option value="name-desc">Name Z–A</option>
+                  <option value="score-desc">Score ↓</option>
+                  <option value="score-asc">Score ↑</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="empty-state hidden" id="emptyState" role="status">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12h6m-3-3v6"/><circle cx="12" cy="12" r="10"/></svg>
+            <p>No submissions match this filter.</p>
+          </div>
+
+          <!-- Not-submitted section -->
+          <div id="notSubmittedSection" class="not-submitted-section hidden">
+            <button class="ns-toggle" id="nsToggle" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              <span id="nsToggleLabel">Not Submitted (0)</span>
+            </button>
+            <div class="ns-list hidden" id="nsList"></div>
+          </div>
+
+          <div class="submission-list" id="submissionList" role="list"></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Grade Modal -->
+    <div class="modal-overlay hidden" id="gradeModalOverlay" role="dialog" aria-modal="true" aria-labelledby="gradeModalTitle">
+      <div class="grade-modal">
+        <div class="modal-header">
+          <div>
+            <h3 id="gradeModalTitle">Grade Submission</h3>
+            <p id="gradeModalStudent" class="modal-subtitle"></p>
+          </div>
+          <button class="modal-close" id="gradeModalClose" aria-label="Close modal">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-files" id="modalFiles"></div>
+          <div class="score-row">
+            <label for="scoreInput" class="score-label">Score</label>
+            <div class="score-input-group">
+              <input type="number" id="scoreInput" min="0" max="100" placeholder="0" />
+              <span class="score-max" id="scoreMax">/ 100</span>
+            </div>
+          </div>
+          <div class="feedback-row">
+            <label for="feedbackInput" class="score-label">Teacher Feedback</label>
+            <textarea id="feedbackInput" rows="3" placeholder="Optional feedback for the student…"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancel" id="gradeModalCancel">Cancel</button>
+          <button class="btn-save" id="gradeModalSave">Save Grade</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../sidebar.js"></script>
+    <script src="../header.js"></script>
+    <script src="../data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
