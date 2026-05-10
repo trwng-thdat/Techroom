@@ -185,10 +185,18 @@ window.OwnerData = {
     { name: "L. Sarah Tran", subject: "English", load: 92, rating: 4.8 },
   ],
   cashflow: [
-    { month: "Jan", value: 62 },
-    { month: "Feb", value: 70 },
-    { month: "Mar", value: 76 },
-    { month: "Apr", value: 81 },
-    { month: "May", value: 84 },
+    { month: "Jan", value: 62400 },
+    { month: "Feb", value: 70100 },
+    { month: "Mar", value: 76850 },
+    { month: "Apr", value: 81200 },
+    { month: "May", value: 84600 },
   ],
+  revenueSummary: {
+    month: 84600,
+    lastMonth: 81200,
+    collected: 77420,
+    outstanding: 7180,
+    refunds: 1240,
+    forecast: 90200,
+  },
 };

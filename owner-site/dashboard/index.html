@@ -102,6 +102,48 @@
           </article>
         </section>
 
+        <section class="dashboard-panel revenue-overview" aria-label="Revenue overview">
+          <div class="section-heading">
+            <div>
+              <h2>Revenue Overview</h2>
+              <p>Tuition collection, branch contribution, and monthly cashflow</p>
+            </div>
+            <span class="tiny-badge soft" id="revenueGrowth">+0%</span>
+          </div>
+          <div class="revenue-grid">
+            <article class="revenue-summary-card">
+              <span>Revenue This Month</span>
+              <strong id="revenueThisMonth">$0</strong>
+              <p id="revenueForecast">Forecast $0 next month</p>
+            </article>
+            <article class="revenue-summary-card">
+              <span>Collected</span>
+              <strong id="revenueCollected">$0</strong>
+              <p>Confirmed tuition payments</p>
+            </article>
+            <article class="revenue-summary-card">
+              <span>Outstanding</span>
+              <strong id="revenueOutstanding">$0</strong>
+              <p>Invoices pending follow-up</p>
+            </article>
+            <article class="revenue-summary-card">
+              <span>Refunds</span>
+              <strong id="revenueRefunds">$0</strong>
+              <p>Credits and cancellations</p>
+            </article>
+          </div>
+          <div class="revenue-detail-grid">
+            <div>
+              <h3>Branch Revenue</h3>
+              <div class="branch-revenue-list" id="branchRevenueList"></div>
+            </div>
+            <div>
+              <h3>Monthly Cashflow</h3>
+              <div class="cashflow-chart" id="cashflowChart"></div>
+            </div>
+          </div>
+        </section>
+
         <section class="dashboard-panel teacher-summary">
           <div class="section-heading">
             <div>

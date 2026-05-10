@@ -1661,6 +1661,129 @@ h1 {
   margin-bottom: 18px;
 }
 
+.revenue-overview {
+  margin-bottom: 28px;
+}
+
+.revenue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 30px;
+}
+
+.revenue-summary-card {
+  border-radius: 12px;
+  padding: 20px;
+  background: #edf4f1;
+}
+
+.revenue-summary-card span {
+  display: block;
+  margin-bottom: 10px;
+  color: #66716d;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.revenue-summary-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.revenue-summary-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.revenue-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: 28px;
+}
+
+.revenue-detail-grid h3 {
+  margin-bottom: 16px;
+}
+
+.branch-revenue-list {
+  display: grid;
+  gap: 14px;
+}
+
+.branch-revenue-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 18px;
+  align-items: center;
+}
+
+.branch-revenue-row span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.branch-revenue-row b {
+  color: var(--green);
+}
+
+.branch-revenue-row .bar {
+  grid-column: 1 / -1;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e0e8e5;
+}
+
+.branch-revenue-row .bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), #10bfa3);
+}
+
+.cashflow-chart {
+  min-height: 220px;
+  display: flex;
+  align-items: end;
+  gap: 14px;
+  border-radius: 12px;
+  padding: 24px 18px 12px;
+  background: #f4f8f6;
+}
+
+.cashflow-column {
+  flex: 1;
+  min-width: 54px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.cashflow-column span {
+  width: 100%;
+  max-width: 44px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #10bfa3, var(--green));
+}
+
+.cashflow-column strong {
+  color: #43504c;
+  font-size: 11px;
+}
+
+.cashflow-column small {
+  color: var(--muted);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .performance-table td,
 .performance-table th {
   border-bottom-color: #edf2ef;
@@ -1741,7 +1864,9 @@ h1 {
   .course-builder,
   .form-layout,
   .overview-metrics,
-  .dashboard-grid {
+  .dashboard-grid,
+  .revenue-grid,
+  .revenue-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1791,7 +1916,9 @@ h1 {
   .form-layout,
   .form-grid,
   .overview-metrics,
-  .dashboard-grid {
+  .dashboard-grid,
+  .revenue-grid,
+  .revenue-detail-grid {
     grid-template-columns: 1fr;
   }
 

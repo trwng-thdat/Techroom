@@ -7,6 +7,14 @@ const reportArea = document.querySelector("#reportArea");
 const rangeTabs = Array.from(document.querySelectorAll("[data-range]"));
 const enrollmentChart = document.querySelector("#enrollmentChart");
 const teacherPerformance = document.querySelector("#teacherPerformance");
+const revenueGrowth = document.querySelector("#revenueGrowth");
+const revenueThisMonth = document.querySelector("#revenueThisMonth");
+const revenueForecast = document.querySelector("#revenueForecast");
+const revenueCollected = document.querySelector("#revenueCollected");
+const revenueOutstanding = document.querySelector("#revenueOutstanding");
+const revenueRefunds = document.querySelector("#revenueRefunds");
+const branchRevenueList = document.querySelector("#branchRevenueList");
+const cashflowChart = document.querySelector("#cashflowChart");
 const reportData = {
   "All Technologies": {
     students: "1,240",
@@ -90,6 +98,10 @@ const teachers = [
   { name: "Liam Chen", since: "2023", specialty: "Data Science", workload: 42, note: "Low", rating: 4.8, reviews: 56, revenue: "$1,450", avatar: "LC", color: "#27364f" },
 ];
 
+function formatCurrency(value) {
+  return `$${value.toLocaleString("en-US")}`;
+}
+
 function formatDateForTitle(value) {
   return new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
     month: "short",
@@ -145,6 +157,49 @@ function renderTeachers() {
     .join("");
 }
 
+function renderRevenue() {
+  const summary = window.OwnerData.revenueSummary;
+  const growth = Math.round(((summary.month - summary.lastMonth) / summary.lastMonth) * 1000) / 10;
+  const totalBranchRevenue = window.OwnerData.branches.reduce((sum, branch) => sum + branch.revenue, 0);
+  const maxCashflow = Math.max(...window.OwnerData.cashflow.map((item) => item.value));
+
+  revenueGrowth.textContent = `+${growth}% MoM`;
+  revenueThisMonth.textContent = formatCurrency(summary.month);
+  revenueForecast.textContent = `Forecast ${formatCurrency(summary.forecast)} next month`;
+  revenueCollected.textContent = formatCurrency(summary.collected);
+  revenueOutstanding.textContent = formatCurrency(summary.outstanding);
+  revenueRefunds.textContent = formatCurrency(summary.refunds);
+
+  branchRevenueList.innerHTML = window.OwnerData.branches
+    .map((branch) => {
+      const percent = Math.round((branch.revenue / totalBranchRevenue) * 100);
+      return `
+        <article class="branch-revenue-row">
+          <div>
+            <strong>${branch.name}</strong>
+            <span>${branch.students} students • ${branch.occupancy}% occupancy</span>
+          </div>
+          <b>${formatCurrency(branch.revenue)}</b>
+          <div class="bar"><span style="width: ${percent}%"></span></div>
+        </article>
+      `;
+    })
+    .join("");
+
+  cashflowChart.innerHTML = window.OwnerData.cashflow
+    .map((item) => {
+      const height = Math.max(24, Math.round((item.value / maxCashflow) * 150));
+      return `
+        <div class="cashflow-column">
+          <span style="height: ${height}px"></span>
+          <strong>${formatCurrency(item.value)}</strong>
+          <small>${item.month}</small>
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function setRange(days) {
   const end = new Date();
   const start = new Date();
@@ -182,3 +237,4 @@ exportReport.addEventListener("click", () => {
 
 renderDashboard();
 renderTeachers();
+renderRevenue();
