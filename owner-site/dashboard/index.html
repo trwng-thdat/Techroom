@@ -52,6 +52,13 @@
               </select>
             </div>
           </div>
+          <div class="report-field">
+            <label for="branchSelect">Branch</label>
+            <div class="select-control">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18" /><path d="M5 21V5h14v16" /><path d="M9 9h1" /><path d="M14 9h1" /><path d="M9 13h1" /><path d="M14 13h1" /></svg>
+              <select id="branchSelect"></select>
+            </div>
+          </div>
           <button class="filter-square" type="button" id="applyFilters" aria-label="Apply dashboard filters">
             <svg viewBox="0 0 24 24"><path d="M3 5h18" /><path d="M7 12h10" /><path d="M10 19h4" /></svg>
           </button>
@@ -106,7 +113,7 @@
           <div class="section-heading">
             <div>
               <h2>Revenue Overview</h2>
-              <p>Tuition collection, branch contribution, and monthly cashflow</p>
+              <p id="selectedBranchName">Tuition collection and monthly cashflow for selected branch</p>
             </div>
             <span class="tiny-badge soft" id="revenueGrowth">+0%</span>
           </div>
@@ -134,7 +141,7 @@
           </div>
           <div class="revenue-detail-grid">
             <div>
-              <h3>Branch Revenue</h3>
+              <h3>Selected Branch Revenue</h3>
               <div class="branch-revenue-list" id="branchRevenueList"></div>
             </div>
             <div>

@@ -1,6 +1,7 @@
 const startDate = document.querySelector("#startDate");
 const endDate = document.querySelector("#endDate");
 const courseCategory = document.querySelector("#courseCategory");
+const branchSelect = document.querySelector("#branchSelect");
 const applyFilters = document.querySelector("#applyFilters");
 const exportReport = document.querySelector("#exportReport");
 const reportArea = document.querySelector("#reportArea");
@@ -15,6 +16,7 @@ const revenueOutstanding = document.querySelector("#revenueOutstanding");
 const revenueRefunds = document.querySelector("#revenueRefunds");
 const branchRevenueList = document.querySelector("#branchRevenueList");
 const cashflowChart = document.querySelector("#cashflowChart");
+const selectedBranchName = document.querySelector("#selectedBranchName");
 const reportData = {
   "All Technologies": {
     students: "1,240",
@@ -102,6 +104,16 @@ function formatCurrency(value) {
   return `$${value.toLocaleString("en-US")}`;
 }
 
+function getSelectedBranch() {
+  return window.OwnerData.branches.find((branch) => branch.name === branchSelect.value) || window.OwnerData.branches[0];
+}
+
+function renderBranchOptions() {
+  branchSelect.innerHTML = window.OwnerData.branches
+    .map((branch) => `<option>${branch.name}</option>`)
+    .join("");
+}
+
 function formatDateForTitle(value) {
   return new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
     month: "short",
@@ -158,35 +170,30 @@ function renderTeachers() {
 }
 
 function renderRevenue() {
-  const summary = window.OwnerData.revenueSummary;
-  const growth = Math.round(((summary.month - summary.lastMonth) / summary.lastMonth) * 1000) / 10;
-  const totalBranchRevenue = window.OwnerData.branches.reduce((sum, branch) => sum + branch.revenue, 0);
-  const maxCashflow = Math.max(...window.OwnerData.cashflow.map((item) => item.value));
+  const branch = getSelectedBranch();
+  const growth = Math.round(((branch.revenue - branch.lastMonthRevenue) / branch.lastMonthRevenue) * 1000) / 10;
+  const maxCashflow = Math.max(...branch.cashflow.map((item) => item.value));
 
   revenueGrowth.textContent = `+${growth}% MoM`;
-  revenueThisMonth.textContent = formatCurrency(summary.month);
-  revenueForecast.textContent = `Forecast ${formatCurrency(summary.forecast)} next month`;
-  revenueCollected.textContent = formatCurrency(summary.collected);
-  revenueOutstanding.textContent = formatCurrency(summary.outstanding);
-  revenueRefunds.textContent = formatCurrency(summary.refunds);
+  selectedBranchName.textContent = `${branch.name} • ${branch.students} students • ${branch.occupancy}% occupancy`;
+  revenueThisMonth.textContent = formatCurrency(branch.revenue);
+  revenueForecast.textContent = `Forecast ${formatCurrency(branch.forecast)} next month`;
+  revenueCollected.textContent = formatCurrency(branch.collected);
+  revenueOutstanding.textContent = formatCurrency(branch.outstanding);
+  revenueRefunds.textContent = formatCurrency(branch.refunds);
 
-  branchRevenueList.innerHTML = window.OwnerData.branches
-    .map((branch) => {
-      const percent = Math.round((branch.revenue / totalBranchRevenue) * 100);
-      return `
-        <article class="branch-revenue-row">
-          <div>
-            <strong>${branch.name}</strong>
-            <span>${branch.students} students • ${branch.occupancy}% occupancy</span>
-          </div>
-          <b>${formatCurrency(branch.revenue)}</b>
-          <div class="bar"><span style="width: ${percent}%"></span></div>
-        </article>
-      `;
-    })
-    .join("");
+  branchRevenueList.innerHTML = `
+    <article class="branch-revenue-row selected-branch-row">
+      <div>
+        <strong>${branch.name}</strong>
+        <span>${branch.students} students • ${branch.occupancy}% occupancy • ${growth}% month-over-month growth</span>
+      </div>
+      <b>${formatCurrency(branch.revenue)}</b>
+      <div class="bar"><span style="width: ${Math.min(branch.occupancy, 100)}%"></span></div>
+    </article>
+  `;
 
-  cashflowChart.innerHTML = window.OwnerData.cashflow
+  cashflowChart.innerHTML = branch.cashflow
     .map((item) => {
       const height = Math.max(24, Math.round((item.value / maxCashflow) * 150));
       return `
@@ -223,6 +230,7 @@ applyFilters.addEventListener("click", () => {
 });
 
 courseCategory.addEventListener("change", renderDashboard);
+branchSelect.addEventListener("change", renderRevenue);
 
 exportReport.addEventListener("click", () => {
   const previousTitle = document.title;
@@ -235,6 +243,7 @@ exportReport.addEventListener("click", () => {
   }, 150);
 });
 
+renderBranchOptions();
 renderDashboard();
 renderTeachers();
 renderRevenue();
