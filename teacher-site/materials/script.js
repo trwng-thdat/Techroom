@@ -92,12 +92,12 @@ function openCreateModal() {
   currentEditIndex = -1;
   materialForm.reset();
   fileInput.value = "";
-  fileName.textContent = "";
+  fileName.textContent = "No file selected";
   deleteFooter.style.display = "none";
   modalTitle.textContent = "Add New Material";
   typeRadios[0].checked = true;
   updateTypeFields();
-  showModal();
+  openMaterialModal();
 }
 
 // Open modal for editing material
@@ -124,7 +124,7 @@ function openEditModal(index) {
 
   deleteFooter.style.display = "block";
   modalTitle.textContent = "Edit Material";
-  showModal();
+  openMaterialModal();
 }
 
 // Update visibility of type-specific fields
@@ -136,17 +136,17 @@ function updateTypeFields() {
   linkGroup.style.display = selectedType === "link" ? "block" : "none";
 }
 
-// Show modal
-function showModal() {
+// Open material modal
+function openMaterialModal() {
   materialModal.setAttribute("aria-hidden", "false");
 }
 
-// Hide modal
-function hideModal() {
+// Close material modal
+function closeMaterialModal() {
   materialModal.setAttribute("aria-hidden", "true");
   materialForm.reset();
   fileInput.value = "";
-  fileName.textContent = "";
+  fileName.textContent = "No file selected";
   currentEditIndex = -1;
 }
 
@@ -216,7 +216,7 @@ materialForm.addEventListener("submit", (e) => {
   }
 
   renderMaterials();
-  hideModal();
+  closeMaterialModal();
 });
 
 // Handle delete
@@ -232,11 +232,11 @@ document.querySelector(".delete-material-btn").addEventListener("click", () => {
 });
 
 // Handle modal close button
-document.querySelector(".modal-close").addEventListener("click", hideModal);
-document.querySelector(".cancel-button").addEventListener("click", hideModal);
+document.querySelector(".modal-close").addEventListener("click", closeMaterialModal);
+document.querySelector(".cancel-button").addEventListener("click", closeMaterialModal);
 
 // Close modal when clicking overlay
-document.querySelector(".modal-overlay").addEventListener("click", hideModal);
+document.querySelector(".material-modal-overlay").addEventListener("click", closeMaterialModal);
 
 // Type radio change handler
 typeRadios.forEach((radio) => {

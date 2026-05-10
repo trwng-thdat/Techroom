@@ -443,14 +443,14 @@ h1 {
   pointer-events: auto;
 }
 
-.modal-overlay {
+.material-modal-overlay {
   position: absolute;
   inset: 0;
   background: rgba(32, 38, 37, 0.5);
   backdrop-filter: blur(2px);
 }
 
-.modal-content {
+.material-modal-content {
   position: relative;
   width: 90%;
   max-width: 540px;
