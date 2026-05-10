@@ -8,6 +8,7 @@ This repository is a static demo/prototype. Keep changes lightweight and self-co
 - `teacher-site/`: teacher-facing HTML, CSS, and JavaScript. Teacher app pages are organized into page folders such as `my-classes/`, `class-management/`, `materials/`, `assignments/`, and `schedule/`.
 - `staff-site/`: academic staff-facing HTML, CSS, and JavaScript. Staff app pages are organized into page folders such as `dashboard/`, `classes/`, `classes/detail/`, `classes/new/`, `students/`, `students/new/`, `timetable/`, and `timetable/new/`.
 - `owner-site/`: center admin/owner-facing HTML, CSS, and JavaScript. Admin app pages are organized into page folders such as `dashboard/`, `accounts/`, and `classes/`.
+- `auth-site/`: standalone authentication prototype with login, password, account activation, and activation-success pages.
 - `README.md`: short project identifier.
 
 Each page folder keeps its files side by side as `index.html`, `styles.css`, and `script.js`. Treat each folder as an isolated page unit unless a change must stay consistent across multiple pages.
@@ -35,6 +36,7 @@ start .\student-site\index.html
 start .\teacher-site\index.html
 start .\staff-site\index.html
 start .\owner-site\index.html
+start .\auth-site\index.html
 ```
 
 For a local static server, use any simple server from the repository root, for example:
@@ -43,7 +45,7 @@ For a local static server, use any simple server from the repository root, for e
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/student-site/`, `http://localhost:8000/teacher-site/`, `http://localhost:8000/staff-site/`, or `http://localhost:8000/owner-site/`.
+Then visit `http://localhost:8000/student-site/`, `http://localhost:8000/teacher-site/`, `http://localhost:8000/staff-site/`, `http://localhost:8000/owner-site/`, or `http://localhost:8000/auth-site/`.
 
 When adding or changing a page, manually verify the affected HTML file and its immediate interactions in a browser. Keep any required script order intact, especially shared teacher chrome before page-specific scripts.
 

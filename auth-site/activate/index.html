@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activate Account</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="auth-shell activation-shell">
+      <section class="auth-stage">
+        <div class="auth-stack">
+          <div>
+            <span class="brand-kicker">The Digital Atelier</span>
+            <a class="brand" href="../index.html">
+              <span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="m9 10 3 2-3 2" /><path d="M14 15h3" /></svg></span>
+              Techroom
+            </a>
+          </div>
+          <form class="auth-card activation-card" id="activateForm">
+            <h1>Activate Your Account</h1>
+            <p>Please set a new password to complete your account activation.</p>
+            <div class="field-group">
+              <label for="activationUser">User ID</label>
+              <div class="field-control">
+                <svg viewBox="0 0 24 24"><path d="M16 8a4 4 0 1 0-2.7 3.8" /><path d="M16 8v3a2 2 0 0 0 4 0v-1a8 8 0 1 0-3 6.2" /></svg>
+                <input id="activationUser" autocomplete="username" placeholder="Enter your user ID" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="newPassword">New Password</label>
+              <div class="field-control">
+                <svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3" /><path d="M5 11h14v10H5z" /></svg>
+                <input id="newPassword" type="password" autocomplete="off" placeholder="Enter new password" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="confirmPassword">Confirm New Password</label>
+              <div class="field-control">
+                <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7" /><path d="M18 3v5h-5" /><path d="M21 12a9 9 0 0 1-15 6.7" /><path d="M6 21v-5h5" /></svg>
+                <input id="confirmPassword" type="password" autocomplete="off" placeholder="Confirm new password" />
+              </div>
+            </div>
+            <section class="requirements" aria-label="Password requirements">
+              <strong><svg viewBox="0 0 24 24"><path d="M12 17h.01" /><path d="M12 8v5" /><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" /></svg>Password Requirements</strong>
+              <span class="requirement" data-rule="length">At least 8 characters</span>
+              <span class="requirement" data-rule="uppercase">One uppercase letter</span>
+              <span class="requirement" data-rule="number">One number</span>
+              <span class="requirement" data-rule="special">One special character</span>
+            </section>
+            <button class="primary-button" type="submit">Activate Account →</button>
+            <a class="cancel-link" href="../index.html">Cancel</a>
+          </form>
+          <nav class="auth-footer" aria-label="Auth links">
+            <a href="#">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+            <span>•</span>
+            <a href="#">Support</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>

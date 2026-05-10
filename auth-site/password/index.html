@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techroom Password</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="auth-shell">
+      <section class="auth-stage">
+        <div class="auth-stack">
+          <span class="brand">Atelier Tutoring</span>
+          <form class="auth-card" id="passwordForm">
+            <div class="profile-photo"><span class="verified-dot">✓</span></div>
+            <h1>Welcome back, <span data-welcome-name>Sarah</span></h1>
+            <p>Enter your password to continue</p>
+            <div class="field-group">
+              <label for="password">Password</label>
+              <div class="field-control">
+                <span>••••</span>
+                <input id="password" type="password" autocomplete="current-password" value="atelier2026" />
+                <button id="togglePassword" type="button" aria-label="Show password">
+                  <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" /><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></svg>
+                </button>
+              </div>
+            </div>
+            <a class="inline-link" href="#" data-toast="Password reset email sent.">Forgot password?</a>
+            <button class="primary-button" type="submit">Login</button>
+            <a class="plain-action" href="../index.html">
+              <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 1 0-16 0" /><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /></svg>
+              Change Username
+            </a>
+          </form>
+          <nav class="auth-footer" aria-label="Auth links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Help Center</a>
+          </nav>
+        </div>
+      </section>
+      <span class="system-chip">System Online</span>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>
