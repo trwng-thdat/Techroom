@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techroom Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="auth-shell">
+      <section class="auth-stage">
+        <div class="auth-stack">
+          <a class="brand" href="../index.html">
+            <span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="m9 10 3 2-3 2" /><path d="M14 15h3" /></svg></span>
+            Techroom
+          </a>
+          <form class="auth-card" id="usernameForm">
+            <h1>Welcome to Techroom</h1>
+            <p>Enter your username to sign in</p>
+            <div class="field-group">
+              <label for="username">Username</label>
+              <div class="field-control">
+                <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 1 0-16 0" /><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /></svg>
+                <input id="username" autocomplete="username" placeholder="e.g. alex_atelier" />
+              </div>
+            </div>
+            <button class="primary-button" type="submit">Next</button>
+            <div class="divider">or</div>
+            <a class="secondary-button" href="activate/index.html">Active account</a>
+          </form>
+          <nav class="auth-footer" aria-label="Auth links">
+            <a href="#">Help Center</a>
+            <span>•</span>
+            <a href="#">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
